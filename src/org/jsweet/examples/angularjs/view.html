@@ -1,0 +1,39 @@
+<h1>Invitation #{{invitation.id + 1}}</h1>
+<div id="view" class="panel panel-default">
+	<div class="panel-body">
+		<table class="invitation-infos">
+			<tr>
+				<td>First name:</td>
+				<td id="firstNameValue">{{invitation.firstName}}</td>
+			</tr>
+			<tr>
+				<td>Last name:</td>
+				<td id="lastNameValue">{{invitation.lastName}}</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td id="emailValue">{{invitation.email}}</td>
+			</tr>
+			<tr>
+				<td>Status:</td>
+				<td id="statusValue">{{invitation.getStatusLabel()}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="panel-footer">
+	Created on {{invitation.creationDate | date : 'yyyy-MM-dd HH:mm'}}
+	</div>
+</div>
+
+<div class="btn-group btn-group-justified" role="group">
+	<a class="btn btn-default" id="backToList" href="#/list">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		&nbsp;
+		Back to list
+	</a>
+	<a class="btn btn-primary" id="edit" href="#/edit/{{invitation.id}}" ng-show="invitation.isSubmitted()">
+		<span class="glyphicon glyphicon-pencil"></span>
+		&nbsp;
+		Modify
+	</a>
+</div>

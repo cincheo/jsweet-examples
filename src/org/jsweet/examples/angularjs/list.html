@@ -1,0 +1,18 @@
+<h1>Invitation list</h1>
+<div id="list" class="list-group">
+	<a href="" ng-click="viewInvitation(invitation)" class="list-group-item"
+		ng-repeat="invitation in invitations">
+		<span ng-bind="invitation.getFullName()"></span>
+		
+		<span class="badge glyphicon glyphicon-eye-open">
+		</span>
+	</a>
+</div>
+
+<div class="btn-group btn-group-justified" role="group">
+	<a class="btn btn-primary" id="request" href="#/request">
+		<span class="glyphicon glyphicon-hand-up"></span>
+		&nbsp;
+		Request
+	</a>
+</div>

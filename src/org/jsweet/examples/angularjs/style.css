@@ -1,0 +1,22 @@
+html, body {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 5px;
+}
+
+.greetings {
+	font-size: 4em;
+}
+
+.invitation-infos td:FIRST-CHILD {
+	font-weight: bold;
+	text-align: right;
+	padding-right: 5px;
+}
+
+.badge.glyphicon {
+	background: none;
+	color: gray;
+	font-weight: normal;
+	font-size: 1.5em;	
+}

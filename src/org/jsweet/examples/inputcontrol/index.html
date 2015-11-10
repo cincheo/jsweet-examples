@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../../../../../lib/bootstrap.min.css">
+		<link rel="stylesheet" href="../../../../../lib/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		
+		<link rel="icon" type="image/png" href="../../../../../logo.png">
+		<link rel="shortcut icon" href="../../../../../logo.png">
+	</head>
+	<body>
+		<div>
+		
+			<div id="form" class="page">
+				<h1>Fill in your information</h1>
+				<form>
+					<div class="form-group">
+						<label for="firstName">Name</label>
+						<input type="text" class="form-control" name="name" placeholder="Enter your name..." required />
+					</div>
+					<div class="form-group">
+						<label for="age">Age</label>
+						<input type="number" class="form-control" name="age" min="1" max="150" placeholder="Enter your age..." required />
+					</div>
+					<div class="form-group">
+						<label for="age">Email</label>
+						<input type="email" class="form-control" name="email" placeholder="xxx@email.com" required />
+					</div>
+					<div class="form-group">
+						<label for="tel">Phone number</label>
+						<input type="tel" class="form-control" name="tel" placeholder="+XX XX XX XX XX" pattern="\+\d{2,3} ?\d{2} ?\d{2} ?\d{2} ?\d{2}" required />
+					</div>
+					<div class="form-group">
+						<label for="url">Website URL</label>
+						<input type="url" class="form-control" name="url" placeholder="http://" required />
+					</div>
+					<div class="form-group">
+						<label for="range">HTML5 experience</label>
+						<input type="range" class="" name="range" min="0" max="100" value="75" required />
+					</div>
+					<div class="form-group">
+						<label for="range">Birth date</label>
+						<input type="date" format="yyyy-MM-dd" class="form-control" name="date" required />
+					</div>
+					<div class="form-group">
+						<label for="continent">Continent</label>
+						<input type="text" class="form-control" name="continent" list="continents" required />
+						<datalist id="continents">
+							<option>Asia</option>
+							<option>Africa</option>
+							<option>North America</option>
+							<option>South America</option>
+							<option>Antarctica</option>
+							<option>Europe</option>
+							<option>Australia</option>
+						</datalist>
+					</div>
+					<div class="form-group">
+						<label for="color">Favorite color</label><br/>
+						<input type="color" class="form-control" name="favcolor" />
+					</div>
+					
+					<div class="btn-group btn-group-justified" role="group">
+						<a id="reset" class="btn btn-danger" href="#">
+							<span class="glyphicon glyphicon-remove"></span>
+							&nbsp;
+							Reset
+						</a>
+						<span class="btn-group">
+							<button id="submit" class="btn btn-success">
+								<span class="glyphicon glyphicon-ok"></span>
+								&nbsp;
+								Submit
+							</button>
+						</span>
+					</div>
+				</form>
+			</div>
+			<div id="view" class="page invisible">
+				<h1>Congratulations, your information has been submitted</h1>
+				<table id="result" class="table">
+					<tr>
+						<td>Name</td>
+						<td><span id="name"></span></td>
+					</tr>
+					<tr>
+						<td>Age</td>
+						<td><span id="age"></span> years</td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><span id="email"></span></td>
+					</tr>
+					<tr>
+						<td>Phone number</td>
+						<td><span id="tel"></span></td>
+					</tr>
+					<tr>
+						<td>Website URL</td>
+						<td><a id="url" href="#"></a></td>
+					</tr>
+					<tr>
+						<td>HTML5 knowledge</td>
+						<td><span id="range"></span>%</td>
+					</tr>
+					<tr>
+						<td>Birth date</td>
+						<td><span id="date"></span></td>
+					</tr>
+					<tr>
+						<td>Continent</td>
+						<td><span id="continent"></span></td>
+					</tr>
+					<tr>
+						<td>Favorite color</td>
+						<td><span id="favcolor"></span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<script src="InputControl.js"></script>
+	</body>
+</html>

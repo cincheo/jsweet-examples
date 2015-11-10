@@ -1,0 +1,57 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 2em;
+}
+
+body > div {
+	position: relative;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 5px;
+}
+
+input.hit:invalid {
+	border: solid 1px red;
+}
+
+input.hit:valid {
+	border: solid 1px green;
+}
+
+.page {
+  -webkit-transition: opacity 1s;
+          transition: opacity 1s;
+	opacity: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-bottom: 10px;
+}
+
+.page.invisible {
+	opacity: 0;
+}
+
+input[type="color"] {
+	width: 40px;
+	display: inline-block;
+}
+
+input[type="color"]::after {
+	content: 'Please click to select a color';
+	color: rgba(100, 100, 100, 0.5);
+	font-size: 1em;
+	margin-top: 5px;
+	display: block;
+	width: 200px;
+	position: relative;
+	left: -13px;
+}
+
+#favcolor {
+	width: 2em;
+	height: 2em;
+	display: inline-block;
+}

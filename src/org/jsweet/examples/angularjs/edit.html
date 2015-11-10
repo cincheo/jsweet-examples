@@ -1,0 +1,33 @@
+<h1>Invitation request</h1>
+<form  id="edit">
+  <div class="form-group">
+    <label for="firstName">First name</label>
+    <input type="text" class="form-control" ng-model="firstName" id="firstName" />
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last name</label>
+    <input type="text" class="form-control" ng-model="lastName" id="lastName" >
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" ng-model="email" placeholder="me@mail.com" id="email">
+  </div>
+</form>
+
+<div class="btn-group btn-group-justified" role="group">
+	<a class="btn btn-default" id="backToList" href="#/list">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		&nbsp;
+		Back to list
+	</a>
+	<a class="btn btn-danger" id="cancel" ng-click="cancel()" ng-show="invitation.isSubmitted()">
+		<span class="glyphicon glyphicon-remove"></span>
+		&nbsp;
+		Cancel
+	</a>
+	<a class="btn btn-success" id="submit" href="" ng-click="submit()">
+		<span class="glyphicon glyphicon-ok"></span>
+		&nbsp;
+		Submit
+	</a>
+</div>
