@@ -17,6 +17,7 @@ import jsweet.lang.Interface;
 import def.backbone.backbone.Collection;
 import def.backbone.backbone.Model;
 import def.backbone.backbone.ModelSaveOptions;
+import def.backbone.backbone.ObjectHash;
 import def.backbone.backbone.View;
 import def.backbone.backbone.ViewOptions;
 import def.jquery.JQuery;
@@ -24,13 +25,13 @@ import def.jquery.JQuery;
 //Todo Model
 //----------
 
-class TodoStruct {
+class TodoStruct extends ObjectHash {
 	public String content;
 	public int order;
 	public boolean done;
 }
 
-class StatsStruct {
+class StatsStruct extends ObjectHash {
 	public int total;
 	public int done;
 	public int remaining;
