@@ -14,3 +14,7 @@ All these example are written in Java using the JSweet APIs (candies). They are 
 - Promises: demonstrates the use of the latest EcmaScript6 Promise API.
 
 Visit the live JSweet's example page (http://www.jsweet.org/examples) to browse the examples, run them and debug the Java code within your favorite browser. Note that all these examples are responsive and should work as well on a Web browser and on a mobile.
+
+## Prerequisites
+
+The `nodejs` and `tsc` executables should be in the path.
