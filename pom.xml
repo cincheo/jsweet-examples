@@ -68,10 +68,10 @@
 									<arg value="--debug" />
 									<!-- input dir -->
 									<arg value="-i" />
-									<arg value="src" />
+									<arg value="src/main/java" />
 									<!-- js output dir -->
 									<arg value="-o" />
-									<arg value="src" />
+									<arg value="src/main/java" />
 									<classpath>
 										<pathelement path="${compile_classpath}" />
 									</classpath>
