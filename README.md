@@ -17,4 +17,4 @@ Visit the live JSweet's example page (http://www.jsweet.org/examples) to browse 
 
 ## Prerequisites
 
-The `nodejs` and `tsc` executables should be in the path.
+The `nodejs` and `npm` executables should be in the path.
