@@ -1,6 +1,6 @@
 # JSweet examples
 
-A set of simple examples to show what can be done with the JSweet transpiler (http://www.jsweet.org).
+A set of simple examples to show what can be done with the JSweet transpiler (https://github.com/cincheo/jsweet).
 
 All these example are written in Java using the JSweet APIs (candies). They are then transpiled to JavaScript by the JSweet transpiler.
 
