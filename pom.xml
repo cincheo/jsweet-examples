@@ -66,12 +66,13 @@
 								<java classname="org.jsweet.JSweetCommandLineLauncher"
 									fork="true" failonerror="true">
 									<arg value="--debug" />
+									<arg value="--noRootDirectories" />
 									<!-- input dir -->
 									<arg value="-i" />
 									<arg value="src/main/java" />
 									<!-- js output dir -->
 									<arg value="-o" />
-									<arg value="src/main/java" />
+									<arg value="target/js" />
 									<classpath>
 										<pathelement path="${compile_classpath}" />
 									</classpath>
