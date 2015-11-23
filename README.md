@@ -4,7 +4,7 @@ A set of simple examples to show what can be done with the JSweet transpiler (ht
 
 All these example are written in Java using the JSweet APIs (candies). They are then transpiled to JavaScript by the JSweet transpiler.
 
-- Simple canvas drawing (`example-name=canvasdrawing`): demonstrates the use of HTML5 canvas.
+- Simple canvas drawing (`canvasdrawing`): demonstrates the use of HTML5 canvas.
 - Simple HTML form control (`inputcontrol`): demonstrates the use of HTML5 forms and inputs.
 - Simple jQuery (`jquery`): demonstrates the use of JQuery with JSweet.
 - Simple Angular (`angularjs`): demonstrates the use of Angular with JSweet.
