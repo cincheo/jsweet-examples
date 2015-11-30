@@ -8,12 +8,6 @@ import static jsweet.util.Globals.function;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import jsweet.dom.Element;
-import jsweet.dom.Event;
-import jsweet.dom.HTMLInputElement;
-import jsweet.dom.KeyboardEvent;
-import jsweet.lang.Ambient;
-import jsweet.lang.Interface;
 import def.backbone.backbone.Collection;
 import def.backbone.backbone.Model;
 import def.backbone.backbone.ModelSaveOptions;
@@ -21,6 +15,11 @@ import def.backbone.backbone.ObjectHash;
 import def.backbone.backbone.View;
 import def.backbone.backbone.ViewOptions;
 import def.jquery.JQuery;
+import jsweet.dom.Element;
+import jsweet.dom.Event;
+import jsweet.dom.HTMLInputElement;
+import jsweet.dom.KeyboardEvent;
+import jsweet.lang.Ambient;
 
 //Todo Model
 //----------
