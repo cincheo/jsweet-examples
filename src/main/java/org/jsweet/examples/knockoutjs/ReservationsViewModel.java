@@ -6,7 +6,6 @@ import static jsweet.util.Globals.number;
 import def.knockout.KnockoutComputed;
 import def.knockout.KnockoutObservable;
 import def.knockout.KnockoutObservableArray;
-import jsweet.lang.Erased;
 import jsweet.lang.Interface;
 
 public class ReservationsViewModel {
