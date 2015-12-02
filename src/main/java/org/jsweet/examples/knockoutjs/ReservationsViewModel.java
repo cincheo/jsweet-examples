@@ -6,6 +6,7 @@ import static jsweet.util.Globals.number;
 import def.knockout.KnockoutComputed;
 import def.knockout.KnockoutObservable;
 import def.knockout.KnockoutObservableArray;
+import jsweet.lang.Erased;
 import jsweet.lang.Interface;
 
 public class ReservationsViewModel {
@@ -31,7 +32,7 @@ public class ReservationsViewModel {
 				price = 290;
 			}
 		}, };
-		seats = ko.observableArray.$apply(new SeatReservation[] { new SeatReservation("Renaud", availableMeals[0]),
+		seats = ko.observableArray(new SeatReservation[] { new SeatReservation("Renaud", availableMeals[0]),
 				new SeatReservation("Eve", availableMeals[2]), new SeatReservation("Domitille", availableMeals[0]),
 				new SeatReservation("Domitille", availableMeals[1]) });
 	}
@@ -59,11 +60,11 @@ class SeatReservation {
 
 	public SeatReservation(String name, Meal initialMeal) {
 		this.name = name;
-		this.meal = ko.observable.$apply(initialMeal);
-		this.formattedPrice = ko.computed.$apply(() -> {
+		this.meal = ko.observable(initialMeal);
+		this.formattedPrice = ko.computed(() -> {
 			Double price = meal.$apply().price;
 			return price != null ? "$" + number(price).toFixed(2) : "None";
 		});
 	}
-
+	
 }
