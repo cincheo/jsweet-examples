@@ -8,12 +8,15 @@ All these example are written in Java using the JSweet APIs (candies). They are 
 - Simple HTML form control (`inputcontrol`): demonstrates the use of HTML5 forms and inputs.
 - Simple jQuery (`jquery`): demonstrates the use of JQuery with JSweet.
 - Simple Angular (`angularjs`): demonstrates the use of Angular with JSweet.
+- Simple Knockout (`knockoutjs`): demonstrates the use of Knockout with JSweet.
 - Ray tracer (`raytracer`): draws a 3D scene, adapted from the TypeScript example page.
 - Todos (`todomvc`): demonstrates the use of Backbone and Underscore with JSweet, adapted from the TypeScript example page.
 - Blocks game (`blocksgame`): demonstrates how to write an HTML5 mobile game with JSweet.
 - Promises (`promises`): demonstrates the use of the latest EcmaScript6 Promise API.
 
 Visit the live JSweet's example page (http://www.jsweet.org/examples) to browse the examples, run them and debug the Java code within your favorite browser. Note that all these examples are responsive and should work as well on a Web browser and on a mobile.
+
+Visit also https://github.com/cincheo/jsweet-examples-threejs for some examples using the Threejs framework (WebGL-powered 3D).
 
 ## Usage
 
