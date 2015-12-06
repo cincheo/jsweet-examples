@@ -1,1 +1,4 @@
 /target/
+.jsweet
+.ts
+.generated
