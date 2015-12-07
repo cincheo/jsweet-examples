@@ -36,17 +36,19 @@ class ConcurrentSpinner {
 
 		startRace() //
 				.then((Consumer<Double[]>)this::onSuccess) //
-				.Catch(this::onError);
+				.Catch((Consumer<Object>)this::onError);
 	}
 
-	private void onSuccess(Double[] times) {
+	private Void onSuccess(Double[] times) {
 		onComplete();
 		document.getElementById("end-overlay").classList.add("visible");
+		return null;
 	}
 
-	private void onError(Object error) {
+	private Void onError(Object error) {
 		onComplete();
 		alert("An error occurred: " + error);
+		return null;
 	}
 
 	private void onComplete() {
