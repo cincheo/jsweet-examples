@@ -1,0 +1,5 @@
+compiler.debugMode=java
+compiler.javascriptFolder=target/js
+compiler.moduleKind=none
+compiler.typescriptFolder=.generated
+eclipse.preferences.version=1
