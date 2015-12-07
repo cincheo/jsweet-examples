@@ -18,7 +18,6 @@ public class JQueryExample {
 		$(document).ready(() -> {
 			JQueryExample example = new JQueryExample();
 			example.start();
-			return null;
 		});
 	}
 

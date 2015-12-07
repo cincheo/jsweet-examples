@@ -14,7 +14,7 @@ import static jsweet.util.StringTypes.div;
 import java.util.function.Consumer;
 
 import def.es6_promise.Promise;
-import def.es6_promise.Promise.Callback;
+import def.es6_promise.Promise.ConstructorCallbackConsumer2;
 import jsweet.dom.HTMLDivElement;
 import jsweet.dom.HTMLElement;
 import jsweet.lang.Array;
@@ -35,22 +35,18 @@ class ConcurrentSpinner {
 		this.spinner = spinner;
 
 		startRace() //
-				.then(this::onSuccess) //
+				.then((Consumer<Double[]>)this::onSuccess) //
 				.Catch(this::onError);
 	}
 
-	private Void onSuccess(Double[] times) {
+	private void onSuccess(Double[] times) {
 		onComplete();
-
 		document.getElementById("end-overlay").classList.add("visible");
-
-		return null;
 	}
 
-	private Void onError(Object error) {
+	private void onError(Object error) {
 		onComplete();
 		alert("An error occurred: " + error);
-		return null;
 	}
 
 	private void onComplete() {
@@ -107,7 +103,7 @@ class ConcurrentSpinner {
 		this.spinner.appendChild(bar);
 
 		double startTime = new Date().getTime();
-		return new Promise<Double>((Callback<Consumer<Double>, Consumer<Object>>) //
+		return new Promise<Double>((ConstructorCallbackConsumer2<Consumer<Double>, Consumer<Object>>) //
 				(resolve, reject) -> {
 					this.onProgress(bar, resolve, reject, startTime);
 				});

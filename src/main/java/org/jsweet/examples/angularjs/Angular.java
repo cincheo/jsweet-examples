@@ -17,7 +17,6 @@ import def.angularjs.ng.IDeferred;
 import def.angularjs.ng.ILocationService;
 import def.angularjs.ng.IModule;
 import def.angularjs.ng.IPromise;
-import def.angularjs.ng.IPromise.SuccessCallback;
 import def.angularjs.ng.IQService;
 import def.angularjs.ng.IScope;
 import def.angularjs.ng.route.IRoute;
@@ -179,7 +178,8 @@ class InvitationEditController {
 	private InvitationEditScope $scope;
 	private ILocationService $location;
 
-	public InvitationEditController(InvitationEditScope $scope, IRouteParamsService $routeParams, ILocationService $location) {
+	public InvitationEditController(InvitationEditScope $scope, IRouteParamsService $routeParams,
+			ILocationService $location) {
 		this.$scope = $scope;
 		this.$location = $location;
 		this.invitation = InvitationRepository.instance.get(parseInt($routeParams.$get("id").toString()));
@@ -252,12 +252,11 @@ class InvitationListController {
 		$scope.invitations = invitations;
 
 		$scope.viewInvitation = this::viewInvitation;
-		InvitationRepository.instance.list($q).then((SuccessCallback<Array<Invitation>, Void>) (existingInvitations) -> {
+		InvitationRepository.instance.list($q).then((Consumer<Array<Invitation>>) existingInvitations -> {
 			console.log("got invitations", existingInvitations);
 			for (Invitation invitation : existingInvitations) {
 				invitations.push(invitation);
 			}
-			return null;
 		});
 	}
 
