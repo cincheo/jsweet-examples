@@ -252,11 +252,12 @@ class InvitationListController {
 		$scope.invitations = invitations;
 
 		$scope.viewInvitation = this::viewInvitation;
-		InvitationRepository.instance.list($q).then((Consumer<Array<Invitation>>) existingInvitations -> {
+		InvitationRepository.instance.list($q).thenSuccessCallbackFunction(existingInvitations -> {
 			console.log("got invitations", existingInvitations);
 			for (Invitation invitation : existingInvitations) {
 				invitations.push(invitation);
 			}
+			return null;
 		});
 	}
 

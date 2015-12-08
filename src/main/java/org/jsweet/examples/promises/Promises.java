@@ -14,7 +14,7 @@ import static jsweet.util.StringTypes.div;
 import java.util.function.Consumer;
 
 import def.es6_promise.Promise;
-import def.es6_promise.Promise.ConstructorCallbackConsumer2;
+import def.es6_promise.Promise.CallbackBiConsumer;
 import jsweet.dom.HTMLDivElement;
 import jsweet.dom.HTMLElement;
 import jsweet.lang.Array;
@@ -25,18 +25,22 @@ class ConcurrentSpinner {
 
 	public static void main(String[] args) {
 		window.onload = (e) -> {
-			return new ConcurrentSpinner((HTMLDivElement)document.getElementById("spinner"));
+			return new ConcurrentSpinner((HTMLDivElement) document.getElementById("spinner"));
 		};
 	}
-	
+
 	private HTMLDivElement spinner;
 
 	public ConcurrentSpinner(HTMLDivElement spinner) {
 		this.spinner = spinner;
 
 		startRace() //
-				.then((Consumer<Double[]>)this::onSuccess) //
-				.Catch((Consumer<Object>)this::onError);
+				.thenOnFulfilledFunction(this::onSuccess) //
+				.catchOnRejectedFunction(this::onError);
+
+		startRace().thenOnFulfilledFunction((p1) -> {
+			return null;
+		});
 	}
 
 	private Void onSuccess(Double[] times) {
@@ -105,13 +109,14 @@ class ConcurrentSpinner {
 		this.spinner.appendChild(bar);
 
 		double startTime = new Date().getTime();
-		return new Promise<Double>((ConstructorCallbackConsumer2<Consumer<Double>, Consumer<Object>>) //
-				(resolve, reject) -> {
-					this.onProgress(bar, resolve, reject, startTime);
-				});
+		return new Promise<Double>((CallbackBiConsumer<Consumer<Double>, Consumer<Object>>) //
+		(resolve, reject) -> {
+			this.onProgress(bar, resolve, reject, startTime);
+		});
 	}
 
-	private void onProgress(HTMLDivElement progressBar, Consumer<Double> resolve, Consumer<Object> reject, double startTime) {
+	private void onProgress(HTMLDivElement progressBar, Consumer<Double> resolve, Consumer<Object> reject,
+			double startTime) {
 		double progress = parseInt(progressBar.dataset.$get("progress"));
 
 		// console.log(progressBar.id + ": " + progress + "%");
@@ -120,7 +125,8 @@ class ConcurrentSpinner {
 
 		HTMLElement text = (HTMLElement) progressBar.querySelector(".text");
 		text.textContent = progress + "%";
-		text.style.color = "rgb(" + (40 + (((100 - progress) / 100) * 215)) + ", " + (2 * progress / 100) * 255 + ", 0)";
+		text.style.color = "rgb(" + (40 + (((100 - progress) / 100) * 215)) + ", " + (2 * progress / 100) * 255
+				+ ", 0)";
 		text.style.fontSize = ((progress + 20) / 55) + "em";
 
 		if (progress < 100) {
