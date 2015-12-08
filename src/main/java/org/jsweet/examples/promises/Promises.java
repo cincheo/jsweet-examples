@@ -37,10 +37,6 @@ class ConcurrentSpinner {
 		startRace() //
 				.thenOnFulfilledFunction(this::onSuccess) //
 				.catchOnRejectedFunction(this::onError);
-
-		startRace().thenOnFulfilledFunction((p1) -> {
-			return null;
-		});
 	}
 
 	private Void onSuccess(Double[] times) {
