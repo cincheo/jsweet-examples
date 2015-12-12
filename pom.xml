@@ -123,8 +123,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.jsweet</groupId>
-			<artifactId>jsweet-java-override</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<artifactId>jsweet-core-strict</artifactId>
+			<version>1.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsweet.candies</groupId>

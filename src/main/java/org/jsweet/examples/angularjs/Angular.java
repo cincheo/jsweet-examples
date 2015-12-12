@@ -59,7 +59,7 @@ class Invitation {
 	}
 
 	public String getStatusLabel() {
-		String label = (String) object(InvitationStatus.class).$get("" + status);
+		String label = (String) InvitationStatus.class.$get("" + status);
 		return toTitleCase(label);
 	}
 }
@@ -153,7 +153,7 @@ abstract class InvitationViewScope extends IScope {
 
 class InvitationViewController {
 	public InvitationViewController(InvitationViewScope $scope, IRouteParamsService $routeParams) {
-		double id = parseInt(object($routeParams.$get("id")).toString());
+		double id = parseInt($routeParams.$get("id").toString());
 		console.log("view invitation: " + id);
 
 		Invitation invitation = InvitationRepository.instance.get(id);
@@ -306,8 +306,8 @@ class Globals {
 	}
 
 	public static String toTitleCase(String str) {
-		return string(str.toLowerCase()).replace(new RegExp("\\w\\S*", "g"), (tok, i) -> {
-			return string(tok).charAt(0).toUpperCase() + string(tok).substr(1).toLowerCase();
+		return str.toLowerCase().replace(new RegExp("\\w\\S*", "g"), (tok, i) -> {
+			return tok.charAt(0).toUpperCase() + tok.substr(1).toLowerCase();
 		});
 	}
 }
