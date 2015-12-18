@@ -68,7 +68,7 @@
 				<artifactId>jsweet-maven-plugin</artifactId>
 				<version>1.0.0-SNAPSHOT</version>
 				<configuration>
-					<debug>true</debug>
+					<sourceMap>true</sourceMap>
 					<outDir>target/js</outDir>
 					<targetVersion>ES3</targetVersion>
 				</configuration>
