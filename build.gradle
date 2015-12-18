@@ -1,0 +1,56 @@
+import org.jsweet.transpiler.EcmaScriptComplianceLevel;
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'org.jsweet'
+version = '1.0.0-SNAPSHOT'
+
+description = """A set of examples to illustrate JSweet"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "http://repository.jsweet.org/artifactory/libs-release-local" }
+		maven { url "http://repository.jsweet.org/artifactory/libs-snapshot-local" }
+		maven { url "http://repository.jsweet.org/artifactory/plugins-release-local" }
+		maven { url "http://repository.jsweet.org/artifactory/plugins-snapshot-local" }
+		maven { url "http://google-diff-match-patch.googlecode.com/svn/trunk/maven" }
+	}
+	dependencies {
+		classpath('org.jsweet:jsweet-gradle-plugin:1.0.0-SNAPSHOT') { //
+			transitive = true }
+	}
+}
+
+apply plugin: 'org.jsweet.jsweet-gradle-plugin'
+
+jsweet {
+	verbose = false
+	encoding = 'UTF-8'
+	sourceMaps = true
+	outDir = new File('target/js')
+	targetVersion = EcmaScriptComplianceLevel.ES3
+	includes = ['**/org/jsweet/examples/**/*.java']
+}
+
+repositories {
+
+	mavenCentral()
+	maven { url "http://repository.jsweet.org/artifactory/libs-release-local" }
+	maven { url "http://repository.jsweet.org/artifactory/libs-snapshot-local" }
+	maven { url "http://google-diff-match-patch.googlecode.com/svn/trunk/maven" }
+}
+
+dependencies {
+    compile group: 'org.jsweet.candies', name: 'jsweet-core', version:'1.0.2-SNAPSHOT'
+    compile group: 'org.jsweet.candies', name: 'angular', version:'1.4.2-SNAPSHOT'
+    compile group: 'org.jsweet.candies', name: 'angular-route', version:'1.3.2-SNAPSHOT'
+    compile group: 'org.jsweet.candies', name: 'es6-promise', version:'0.0.2-SNAPSHOT'
+    compile group: 'org.jsweet.candies', name: 'backbone', version:'1.0.2-SNAPSHOT'
+    compile group: 'org.jsweet.candies', name: 'knockout', version:'3.2.2-SNAPSHOT'
+    compile group: 'org.jsweet', name: 'jsweet-transpiler', version:'1.0.0-SNAPSHOT'
+}
