@@ -39,7 +39,6 @@ configurations {
 }
 
 dependencies {
-	compile(group: 'org.jsweet', name: 'jsweet-core-strict', version:'1.0.2-SNAPSHOT')
     compile group: 'org.jsweet.candies', name: 'jsweet-core', version:'1.0.2-SNAPSHOT'
     compile group: 'org.jsweet.candies', name: 'angular', version:'1.4.2-SNAPSHOT'
     compile group: 'org.jsweet.candies', name: 'angular-route', version:'1.3.2-SNAPSHOT'

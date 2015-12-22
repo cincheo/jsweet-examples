@@ -5,6 +5,7 @@ import static jsweet.dom.Globals.confirm;
 import static jsweet.dom.Globals.console;
 import static jsweet.dom.Globals.setTimeout;
 import static jsweet.lang.Globals.parseInt;
+import static jsweet.util.Globals.$get;
 import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.object;
 import static jsweet.util.Globals.string;
@@ -59,7 +60,7 @@ class Invitation {
 	}
 
 	public String getStatusLabel() {
-		String label = (String) InvitationStatus.class.$get("" + status);
+		String label = (String) $get(InvitationStatus.class, "" + status);
 		return toTitleCase(label);
 	}
 }
@@ -306,8 +307,8 @@ class Globals {
 	}
 
 	public static String toTitleCase(String str) {
-		return str.toLowerCase().replace(new RegExp("\\w\\S*", "g"), (tok, i) -> {
-			return tok.charAt(0).toUpperCase() + tok.substr(1).toLowerCase();
+		return string(str.toLowerCase()).replace(new RegExp("\\w\\S*", "g"), (tok, i) -> {
+			return string(tok).charAt(0).toUpperCase() + string(tok).substr(1).toLowerCase();
 		});
 	}
 }
