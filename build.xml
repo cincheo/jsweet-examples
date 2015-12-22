@@ -1,0 +1,46 @@
+<!-- An example build file for ant users -->
+<!-- To be adapted to your own needs -->
+<project name="jsweet-examples" basedir="." default="compile">
+
+	<property name="java.input.dir" value="./src" />
+	<property name="ts.dir" value="./.jsweet/ts" />
+	<property name="js.dir" value="./target/js" />
+	<!-- must contain all the Java jars for the transiler + all necessary Candies -->
+	<property name="lib.dir" value="libs" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<!-- must be run the first time and when dependencies change (requires Maven in the path) -->
+	<target name="copy-maven-dependencies">
+		<exec executable="cmd">
+			<arg value="/C" />
+			<arg value="mvn" />
+			<arg line="dependency:copy-dependencies -DoutputDirectory=${lib.dir}" />
+		</exec>
+	</target>
+
+	<target name="compile" depends="clean">
+		<java classname="org.jsweet.JSweetCommandLineLauncher" fork="true" failonerror="true">
+			<!-- ts output dir -->
+			<arg value="--tsout" />
+			<arg value="${ts.dir}" />
+			<!-- js output dir -->
+			<arg value="-o" />
+			<arg value="${js.dir}" />
+			<!-- input dir -->
+			<arg value="-i" />
+			<arg value="${java.input.dir}" />
+			<classpath refid="classpath">
+			</classpath>
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${out.dir}" />
+	</target>
+
+</project>
