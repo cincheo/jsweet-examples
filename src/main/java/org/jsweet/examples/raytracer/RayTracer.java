@@ -338,18 +338,18 @@ class RayTracer {
 	}
 
 	void render(Scene scene, CanvasRenderingContext2D ctx, int screenWidth, int screenHeight) {
-		TriFunction<Integer, Integer, Camera, Vector> getPoint = (x, y, camera) -> {
-			Function<Integer, Integer> recenterX = (x2) -> {
-				return (int) ((x2 - (screenWidth / 2.0)) / 2.0 / screenWidth);
+		TriFunction<Double, Double, Camera, Vector> getPoint = (x, y, camera) -> {
+			Function<Double, Double> recenterX = (x2) -> {
+				return ((x2 - (screenWidth / 2.0)) / 2.0 / screenWidth);
 			};
-			Function<Integer, Integer> recenterY = (y2) -> {
-				return -(int) ((y2 - (screenHeight / 2.0)) / 2.0 / screenHeight);
+			Function<Double, Double> recenterY = (y2) -> {
+				return -((y2 - (screenHeight / 2.0)) / 2.0 / screenHeight);
 			};
 			return Vector.norm(
 					Vector.plus(camera.forward, Vector.plus(Vector.times(recenterX.apply(x), camera.right), Vector.times(recenterY.apply(y), camera.up))));
 		};
-		for (int y = 0; y < screenHeight; y++) {
-			for (int x = 0; x < screenWidth; x++) {
+		for (double y = 0; y < screenHeight; y++) {
+			for (double x = 0; x < screenWidth; x++) {
 				Color color = this.traceRay(new Ray(scene.camera.pos, getPoint.apply(x, y, scene.camera)), scene, 0);
 				Color c = Color.toDrawingColor(color);
 				ctx.fillStyle = "rgb(" + new String(c.r) + ", " + new String(c.g) + ", " + new String(c.b) + ")";
