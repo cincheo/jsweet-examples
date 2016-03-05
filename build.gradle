@@ -46,11 +46,11 @@ dependencies {
 	compile group: 'org.jsweet.candies', name: 'jsweet-core', version:"1.1.0" + project.dependenciesVersionSuffix
 	compile group: 'org.jsweet.candies', name: 'jquery', version:"1.10.0" + project.dependenciesVersionSuffix
 	compile group: 'org.jsweet.candies', name: 'jqueryui', version:"1.9.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'angular', version:"1.4.3" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'angular-route', version:"1.3.3" + project.dependenciesVersionSuffix
+	compile group: 'org.jsweet.candies', name: 'angular', version:"1.4.0" + project.dependenciesVersionSuffix
+	compile group: 'org.jsweet.candies', name: 'angular-route', version:"1.3.0" + project.dependenciesVersionSuffix
 	compile group: 'org.jsweet.candies', name: 'es6-promise', version:"0.0.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'backbone', version:"1.0.3" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'knockout', version:"3.2.3" + project.dependenciesVersionSuffix
+	compile group: 'org.jsweet.candies', name: 'backbone', version:"1.0.0" + project.dependenciesVersionSuffix
+	compile group: 'org.jsweet.candies', name: 'knockout', version:"3.2.0" + project.dependenciesVersionSuffix
 }
 
 compileJava {
