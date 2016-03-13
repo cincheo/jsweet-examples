@@ -4,6 +4,11 @@ import static jsweet.dom.Globals.console;
 import static jsweet.dom.Globals.document;
 import static jsweet.util.Globals.array;
 import static jsweet.util.StringTypes._2d;
+
+import org.jsweet.examples.blocksgame.util.Direction;
+import org.jsweet.examples.blocksgame.util.Point;
+import org.jsweet.examples.blocksgame.util.Rectangle;
+
 import jsweet.dom.CanvasRenderingContext2D;
 import jsweet.dom.Event;
 import jsweet.dom.HTMLElement;
@@ -12,10 +17,6 @@ import jsweet.dom.Touch;
 import jsweet.dom.TouchEvent;
 import jsweet.lang.Date;
 import jsweet.lang.Math;
-
-import org.jsweet.examples.blocksgame.util.Direction;
-import org.jsweet.examples.blocksgame.util.Point;
-import org.jsweet.examples.blocksgame.util.Rectangle;
 
 public class GameArea {
 
@@ -72,11 +73,7 @@ public class GameArea {
 		this.cols = cols;
 		this.rows = rows;
 		this.positionSize = GameManager.SIZE;
-		this.positions = new BlockElement[cols][rows];
-		for (int i = 0; i < cols; i++) {
-			BlockElement[] line = {};
-			array(this.positions).push(line);
-		}
+		this.positions = new BlockElement[cols][rows];		
 		this.remainingBlocks = document.getElementById("blocks");
 		for (int i = 0; i < this.cols; i++) {
 			for (int j = 0; j < this.rows; j++) {
