@@ -2,7 +2,6 @@ package org.jsweet.examples.blocksgame;
 
 import static jsweet.dom.Globals.console;
 import static jsweet.dom.Globals.document;
-import static jsweet.util.Globals.array;
 import static jsweet.util.StringTypes._2d;
 
 import org.jsweet.examples.blocksgame.util.Direction;
@@ -89,10 +88,6 @@ public class GameArea {
 
 	public void changeSize(int cols, int rows) {
 		BlockElement[][] newPositions = new BlockElement[cols][rows];
-		for (int i = 0; i < cols; i++) {
-			BlockElement[] line = {};
-			array(newPositions).push(line);
-		}
 		for (int i = 0; i < cols; i++) {
 			for (int j = 0; j < rows; j++) {
 				if (i < this.cols && j < this.rows) {
