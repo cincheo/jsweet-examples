@@ -60,7 +60,7 @@ class Invitation {
 	}
 
 	public String getStatusLabel() {
-		String label = (String) $get(InvitationStatus.class, "" + status);
+		String label = $get(InvitationStatus.class, "" + status);
 		return toTitleCase(label);
 	}
 }
