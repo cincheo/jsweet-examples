@@ -4,6 +4,7 @@ import static def.jquery.Globals.$;
 import static def.underscore.Globals._;
 import static jsweet.dom.Globals.clearTimeout;
 import static jsweet.util.Globals.function;
+import static jsweet.util.Globals.union;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -40,6 +41,7 @@ class StatsStruct extends ObjectHash {
 class Todo extends Model {
 
 	// Default attributes for the todo.
+	@Override
 	public TodoStruct defaults() {
 		return new TodoStruct() {
 			{
@@ -50,6 +52,7 @@ class Todo extends Model {
 	}
 
 	// Ensure that each todo created has `content`.
+	@Override
 	public void initialize() {
 		if (this.get("content") == null) {
 			this.set(new TodoStruct() {
@@ -70,6 +73,7 @@ class Todo extends Model {
 	}
 
 	// Remove this Todo from *localStorage* and delete its view.
+	@Override
 	public Object clear() {
 		return this.destroy();
 	}
@@ -119,8 +123,10 @@ class TodoList extends Collection<Todo> {
 	}
 
 	// Todos are sorted by their original insertion order.
-	public double comparator(Todo todo) {
-		return (Integer) todo.get("order");
+	{
+		comparator = union(function((Todo todo) -> {
+			return (Integer) todo.get("order");
+		}));
 	}
 
 }
