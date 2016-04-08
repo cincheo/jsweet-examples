@@ -3,6 +3,7 @@ package org.jsweet.examples.canvasdrawing;
 import static jsweet.dom.Globals.console;
 import static jsweet.dom.Globals.document;
 import static jsweet.dom.Globals.window;
+import static jsweet.util.Globals.union;
 
 import jsweet.dom.CanvasRenderingContext2D;
 import jsweet.dom.Element;
@@ -40,7 +41,7 @@ public class CanvasDrawing {
 	private void draw() {
 		int color = (int) (Math.pow(2, 8 * Math.floor(angle / Math.PI * 2) - 1));
 
-		ctx.fillStyle = "rgb(" + (color >> 16 & 0xFF) + "," + (color >> 8 & 0xFF) + "," + (color & 0xFF) + ")";
+		ctx.fillStyle = union("rgb(" + (color >> 16 & 0xFF) + "," + (color >> 8 & 0xFF) + "," + (color & 0xFF) + ")");
 		console.log(ctx.fillStyle, color +  "opp"  + Math.floor(angle / Math.PI * 2));
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -1,5 +1,7 @@
 package org.jsweet.examples.blocksgame;
 
+import static jsweet.util.Globals.union;
+
 import org.jsweet.examples.blocksgame.util.MobileElement;
 import org.jsweet.examples.blocksgame.util.Point;
 import org.jsweet.examples.blocksgame.util.Vector;
@@ -26,7 +28,7 @@ public class Ball extends MobileElement {
 	private void draw(CanvasRenderingContext2D ctx) {
 		ctx.save();
 		ctx.beginPath();
-		ctx.fillStyle = "white";
+		ctx.fillStyle = union("white");
 		ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2, false);
 		ctx.closePath();
 		ctx.fill();
@@ -36,7 +38,7 @@ public class Ball extends MobileElement {
 		ctx.clip();
 
 		ctx.beginPath();
-		ctx.strokeStyle = "black";
+		ctx.strokeStyle = union("black");
 		ctx.lineWidth = this.radius * 0.1;
 		ctx.shadowBlur = this.radius * 0.4;
 		ctx.shadowColor = "black";

@@ -2,6 +2,7 @@ package org.jsweet.examples.blocksgame;
 
 import static jsweet.dom.Globals.console;
 import static jsweet.dom.Globals.document;
+import static jsweet.util.Globals.union;
 import static jsweet.util.StringTypes._2d;
 
 import org.jsweet.examples.blocksgame.util.Direction;
@@ -72,7 +73,7 @@ public class GameArea {
 		this.cols = cols;
 		this.rows = rows;
 		this.positionSize = GameManager.SIZE;
-		this.positions = new BlockElement[cols][rows];		
+		this.positions = new BlockElement[cols][rows];
 		this.remainingBlocks = document.getElementById("blocks");
 		for (int i = 0; i < this.cols; i++) {
 			for (int j = 0; j < this.rows; j++) {
@@ -174,7 +175,7 @@ public class GameArea {
 		this.clearAll = true;
 		if (block.hitstoBreak > 0) {
 			blockCount++;
-			this.remainingBlocks.innerHTML="Blocks: "+blockCount;
+			this.remainingBlocks.innerHTML = "Blocks: " + blockCount;
 		}
 	}
 
@@ -200,7 +201,7 @@ public class GameArea {
 		BlockElement b = positions[x][y];
 		if (b != null && b.hitstoBreak > 0) {
 			blockCount--;
-			this.remainingBlocks.innerHTML="Blocks: "+blockCount;
+			this.remainingBlocks.innerHTML = "Blocks: " + blockCount;
 		}
 		this.addBlock(new BlockElement(0), x, y);
 		this.clearAll = true;
@@ -294,10 +295,11 @@ public class GameArea {
 		areaLayerCtx.save();
 		areaLayerCtx.font = "14px impact";
 		areaLayerCtx.textAlign = "center";
-		areaLayerCtx.fillStyle = "black";
+		areaLayerCtx.fillStyle = union("black");
 		double margin = this.positionSize * 2;
-		areaLayerCtx.fillRect(margin, (this.rows * this.positionSize) / 2 - 20, (this.cols * this.positionSize) - 2 * margin, 40);
-		areaLayerCtx.fillStyle = "white";
+		areaLayerCtx.fillRect(margin, (this.rows * this.positionSize) / 2 - 20,
+				(this.cols * this.positionSize) - 2 * margin, 40);
+		areaLayerCtx.fillStyle = union("white");
 		areaLayerCtx.fillText(this.message, (this.cols * this.positionSize) / 2, (this.rows * this.positionSize) / 2);
 		areaLayerCtx.restore();
 	}
@@ -324,13 +326,15 @@ public class GameArea {
 
 	private double calculateMaxSpeedCoord() {
 		double maxSpeedCoord = 0;
-		maxSpeedCoord = Math.max(maxSpeedCoord, Math.max(Math.abs(player.speedVector.x), Math.abs(player.speedVector.y)));
+		maxSpeedCoord = Math.max(maxSpeedCoord,
+				Math.max(Math.abs(player.speedVector.x), Math.abs(player.speedVector.y)));
 		maxSpeedCoord = Math.max(maxSpeedCoord, Math.max(Math.abs(ball.speedVector.x), Math.abs(ball.speedVector.y)));
 		return maxSpeedCoord;
 	}
 
 	public boolean contains(Point point) {
-		return point.x >= 0 && point.x < this.cols * this.positionSize && point.y >= 0 && point.y < this.rows * this.positionSize;
+		return point.x >= 0 && point.x < this.cols * this.positionSize && point.y >= 0
+				&& point.y < this.rows * this.positionSize;
 	}
 
 	private Point _tmpPoint = new Point(0, 0);
@@ -373,12 +377,13 @@ public class GameArea {
 				if (player.checkHit(ball)) {
 					console.info("player hits ball! ");
 					player.applyHit(ball);
-					ball.moveTo(ball.getPosition().x + player.speedVector.x * stepValue, ball.getPosition().y + player.speedVector.y * stepValue);
-					while(player.checkHit(ball)) {
+					ball.moveTo(ball.getPosition().x + player.speedVector.x * stepValue,
+							ball.getPosition().y + player.speedVector.y * stepValue);
+					while (player.checkHit(ball)) {
 						ball.move(ball.speedVector.x * stepValue, ball.speedVector.y * stepValue);
 					}
 				}
-				
+
 				for (int i = 0; i < Direction.straightDirections.length; i++) {
 					direction = Direction.straightDirections[i];
 					this.ballLimit.x = ball.getPosition().x;
@@ -413,7 +418,8 @@ public class GameArea {
 							this._tmpPoint.x = _otherAreaPosition.x;
 							this._tmpPoint.y = _otherAreaPosition.y;
 							this._tmpPoint.times(this.positionSize).add(this.positionSize / 2, this.positionSize / 2);
-							this._tmpPoint.add(-direction.x * this.positionSize / 2, -direction.y * this.positionSize / 2);
+							this._tmpPoint.add(-direction.x * this.positionSize / 2,
+									-direction.y * this.positionSize / 2);
 							if (ball.position.distance(this._tmpPoint) <= ball.radius) {
 								hit = element.hit(ball, direction.normalized, this._tmpPoint);
 								if (hit) {
@@ -437,8 +443,10 @@ public class GameArea {
 				}
 				this._oldPosition.x = ball.getPosition().x;
 				this._oldPosition.y = ball.getPosition().y;
-				if (this._oldPosition.x + ball.radius < 0 || this._oldPosition.x - ball.radius > this.cols * positionSize
-						|| this._oldPosition.y + ball.radius < 0 || this._oldPosition.y - ball.radius > this.rows * positionSize) {
+				if (this._oldPosition.x + ball.radius < 0
+						|| this._oldPosition.x - ball.radius > this.cols * positionSize
+						|| this._oldPosition.y + ball.radius < 0
+						|| this._oldPosition.y - ball.radius > this.rows * positionSize) {
 					this.end(-1);
 				}
 			}
@@ -483,7 +491,8 @@ public class GameArea {
 				player.onInputDeviceMove(point);
 			}
 		} else {
-			Point point = this.factory.getGameManager().deviceToWorld(((MouseEvent) event).pageX, ((MouseEvent) event).pageY);
+			Point point = this.factory.getGameManager().deviceToWorld(((MouseEvent) event).pageX,
+					((MouseEvent) event).pageY);
 			player.onInputDeviceMove(point);
 		}
 	}

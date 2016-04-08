@@ -1,6 +1,7 @@
 package org.jsweet.examples.blocksgame;
 
 import static jsweet.dom.Globals.console;
+import static jsweet.util.Globals.union;
 
 import org.jsweet.examples.blocksgame.util.Collisions;
 import org.jsweet.examples.blocksgame.util.Direction;
@@ -62,7 +63,7 @@ public class Player extends MobileElement {
 
 	public void render(CanvasRenderingContext2D ctx) {
 		ctx.save();
-		ctx.fillStyle = hit > 0 ? "rgb(255,0,0)" : "rgba(255,0,0,0.4)";
+		ctx.fillStyle = union(hit > 0 ? "rgb(255,0,0)" : "rgba(255,0,0,0.4)");
 		ctx.beginPath();
 		// ctx.arc(this.getPosition().x, this.getPosition().y, this.radius -
 		// hit, 0, Math.PI * 2);
@@ -75,7 +76,7 @@ public class Player extends MobileElement {
 		ctx.arc(position.x - radius, position.y - radius + radius / f, radius / f, Math.PI / 2, -Math.PI / 2);
 
 		ctx.fill();
-		ctx.strokeStyle = "white";
+		ctx.strokeStyle = union("white");
 		ctx.stroke();
 		ctx.beginPath();
 		ctx.restore();
@@ -99,11 +100,13 @@ public class Player extends MobileElement {
 			return true;
 		}
 		if (ball.position.x >= position.x - radius && ball.position.x <= position.x + radius) {
-			if (ball.position.y < position.y - radius + radius / f && ball.position.y + ball.radius >= position.y - radius) {
+			if (ball.position.y < position.y - radius + radius / f
+					&& ball.position.y + ball.radius >= position.y - radius) {
 				hit = 3;
 				return true;
 			}
-			if (ball.position.y > position.y - radius + radius / f && ball.position.y - ball.radius <= position.y - radius + radius / (f / 2)) {
+			if (ball.position.y > position.y - radius + radius / f
+					&& ball.position.y - ball.radius <= position.y - radius + radius / (f / 2)) {
 				hit = 3;
 				return true;
 			}
@@ -114,14 +117,18 @@ public class Player extends MobileElement {
 	public void applyHit(Ball ball) {
 		if (ball.position.x < position.x - radius) {
 			console.info("left");
-			Collisions.sphericCollision(new MobileElement(new Point(position.x - radius, position.y - radius + radius / f), WEIGHT, (radius / f) * 2,
-					(radius / f) * 2), ball);
+			Collisions.sphericCollision(
+					new MobileElement(new Point(position.x - radius, position.y - radius + radius / f), WEIGHT,
+							(radius / f) * 2, (radius / f) * 2),
+					ball);
 			return;
 		}
 		if (ball.position.x > position.x + radius) {
 			console.info("right");
-			Collisions.sphericCollision(new MobileElement(new Point(position.x + radius, position.y - radius + radius / f), WEIGHT, (radius / f) * 2,
-					(radius / f) * 2), ball);
+			Collisions.sphericCollision(
+					new MobileElement(new Point(position.x + radius, position.y - radius + radius / f), WEIGHT,
+							(radius / f) * 2, (radius / f) * 2),
+					ball);
 			return;
 		}
 		if (ball.position.x >= position.x - radius && ball.position.x <= position.x + radius) {
