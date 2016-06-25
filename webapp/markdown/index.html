@@ -1,15 +1,16 @@
 <html>
-  <head><title>Markdown example</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <form>
-      <div class="form-group">
-        <label for="markdownInputLabel">Enter Markdown</label>
-        <input class="form-control" name="markdownInput" placeholder="Try **Markdown**" type="text">
-      </div>
-    </form>
-    <script src="https://rawgit.com/showdownjs/showdown/develop/dist/showdown.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/js/UserInput.js" type="text/javascript" charset="utf-8"></script>
-  </body>
+<head><title>Markdown example</title>
+  <meta charset="utf-8">
+</head>
+<body>
+<form>
+  <div class="form-group">
+    <label>Enter Markdown</label>
+    <input class="form-control" id="markdownInput" placeholder="Try **Markdown**" type="text">
+  </div>
+</form>
+<!--<script src="https://rawgit.com/showdownjs/showdown/develop/dist/showdown.js"></script>-->
+<script src="../libs/showdown.js"></script>
+<script src="../../target/js/org/jsweet/examples/markdown/MarkdownExample.js"></script>
+</body>
 </html>

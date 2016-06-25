@@ -60,6 +60,8 @@ dependencies {
 	compile group: 'org.jsweet.candies', name: 'es6-promise', version:"0.0.0" + project.dependenciesVersionSuffix
 	compile group: 'org.jsweet.candies', name: 'backbone', version:"1.0.0" + project.dependenciesVersionSuffix
 	compile group: 'org.jsweet.candies', name: 'knockout', version:"3.2.0" + project.dependenciesVersionSuffix
+ // Markdown to HTML converter
+  compile group: 'org.jsweet.candies', name: 'showdown', version: "1.4.1-SNAPSHOT"
 }
 
 compileJava {
