@@ -7,3 +7,5 @@
 /gradle/
 *.swp
 *.swo
+*.iml
+.idea/
