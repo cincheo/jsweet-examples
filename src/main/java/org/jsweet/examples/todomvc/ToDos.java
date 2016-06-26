@@ -82,7 +82,8 @@ class Todo extends Model {
 
 @Ambient
 class Store {
-	public Store(String dbName) {}
+	public Store(String dbName) {
+	}
 }
 
 // Todo Collection
@@ -104,14 +105,14 @@ class TodoList extends Collection<Todo> {
 
 	// Filter down the list of all todo items that are finished.
 	Todo[] done() {
-		return this.filter((todo, i) -> {
+		return this.filter((todo, i, __) -> {
 			return (Boolean) todo.get("done");
 		});
 	}
 
 	// Filter down the list to only todo items that are still not finished.
 	Todo[] remaining() {
-		return this.without(this, this.done());
+		return this.without(jsweet.util.Globals.any(this.done()));
 	}
 
 	// We keep the Todos in sequential order, despite being saved by unordered
@@ -284,8 +285,9 @@ class AppView extends View<Todo> {
 
 	// Add all items in the **Todos** collection at once.
 	void addAll() {
-		Globals.Todos.each((todo, p) -> {
+		Globals.Todos.each((todo, p, __) -> {
 			this.addOne(todo);
+			return null;
 		});
 	}
 
@@ -337,12 +339,13 @@ class AppView extends View<Todo> {
 
 	void toggleAllComplete() {
 		boolean done = this.allCheckbox.checked;
-		Globals.Todos.each((todo, index) -> {
+		Globals.Todos.each((todo, index, __) -> {
 			todo.save(new Object() {
 				{
 					$set("done", done);
 				}
 			});
+			return null;
 		});
 	}
 
