@@ -3,14 +3,14 @@
   <meta charset="utf-8">
 </head>
 <body>
-<form>
-  <div class="form-group">
-    <label>Enter Markdown</label>
-    <input class="form-control" id="markdownInput" placeholder="Try **Markdown**" type="text">
-  </div>
-</form>
-<!--<script src="https://rawgit.com/showdownjs/showdown/develop/dist/showdown.js"></script>-->
-<script src="../libs/showdown.js"></script>
+
+<textarea rows="4" cols="50" id="markdownInput" title="markdownInput"
+          placeholder="Enter **Markdown** text">JSweet is **nice**!</textarea>
+
+<div id="htmlOutput"></div>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"></script>-->
+<script src="../libs/marked.js"></script>
 <script src="../../target/js/org/jsweet/examples/markdown/MarkdownExample.js"></script>
 </body>
 </html>

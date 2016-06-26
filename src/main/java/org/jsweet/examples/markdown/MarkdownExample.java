@@ -1,10 +1,9 @@
 package org.jsweet.examples.markdown;
 
-import def.showdown.showdown.Converter;
-import jsweet.dom.HTMLFormElement;
+import jsweet.dom.HTMLElement;
 import jsweet.dom.HTMLInputElement;
 
-import static jsweet.dom.Globals.console;
+import static def.marked.Globals.marked;
 import static jsweet.dom.Globals.document;
 
 /**
@@ -13,26 +12,35 @@ import static jsweet.dom.Globals.document;
  */
 public class MarkdownExample {
 
-    private final Converter markdownConverter = new Converter();
-
     public MarkdownExample() {
+        // Get the input and output elements from markdown/index.hml
+        HTMLInputElement markdownInput = (HTMLInputElement) document.querySelector("#markdownInput");
+        HTMLElement htmlOutput = (HTMLElement) document.querySelector("#htmlOutput");
 
-        HTMLFormElement form = (HTMLFormElement) document.querySelector("form");
-        HTMLInputElement markdownInput = (HTMLInputElement) form.querySelector("#markdownInput");
-        addHitListener(markdownInput);
+        // Markdown text in the input element appears as HTML in the output element
+        connect(markdownInput, htmlOutput);
+
+        // Show the default text of the input element in the HTML output
+        htmlOutput.innerHTML = marked(markdownInput.value);
     }
 
     public static void main(String... args) {
         new MarkdownExample();
     }
 
-    private void addHitListener(HTMLInputElement element) {
-        //  Transform the content from markdown to HTML
-        element.addEventListener("keyup", (evt) -> {
-            String text = element.value;
-            console.info("Text: " + text);
-            String html = markdownConverter.makeHtml(text);
-            console.info("Text as HTML: " + html);
+    /**
+     * When the user presses a key inside the {@code inputElement}, we convert the text inside it from Markdown to HTML
+     * and put the HTML into the {@code htmlOutput}.
+     *
+     * @param inputElement the user can write Markdown in this {@link HTMLInputElement}
+     * @param htmlOutput   this {@link HTMLElement} shows the text of the {@code inputElement} as HTML
+     */
+    private static void connect(HTMLInputElement inputElement, HTMLElement htmlOutput) {
+        // Transform the content from markdown to HTML
+        inputElement.addEventListener("keyup", (evt) -> {
+            String inputText = inputElement.value;
+            String html = marked(inputText);
+            htmlOutput.innerHTML = html;
         });
     }
 }

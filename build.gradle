@@ -12,69 +12,71 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 buildscript {
-	boolean snapshotMode = true;
-	project.ext.repoType =  snapshotMode ? 'snapshot' : 'release'; 
-	project.ext.dependenciesVersionSuffix = snapshotMode ? '-SNAPSHOT' : '';
-	
-	println "repoType=" + project.repoType
-	println "dependenciesVersionSuffix=" + project.dependenciesVersionSuffix
+  boolean snapshotMode = true;
+  project.ext.repoType = snapshotMode ? 'snapshot' : 'release';
+  project.ext.dependenciesVersionSuffix = snapshotMode ? '-SNAPSHOT' : '';
 
-	repositories {
-		mavenCentral()
-		maven { url "http://repository.jsweet.org/artifactory/libs-" + project.repoType + "-local" }
-		maven { url "http://repository.jsweet.org/artifactory/plugins-" + project.repoType + "-local" }
-		maven { url "http://google-diff-match-patch.googlecode.com/svn/trunk/maven" }
-	}
-	dependencies {
-		classpath('org.jsweet:jsweet-gradle-plugin:1.1.0-SNAPSHOT') { //
-			transitive = true }
-	}
+  println "repoType=" + project.repoType
+  println "dependenciesVersionSuffix=" + project.dependenciesVersionSuffix
+
+  repositories {
+    mavenCentral()
+    maven { url "http://repository.jsweet.org/artifactory/libs-" + project.repoType + "-local" }
+    maven { url "http://repository.jsweet.org/artifactory/plugins-" + project.repoType + "-local" }
+    maven { url "http://google-diff-match-patch.googlecode.com/svn/trunk/maven" }
+  }
+  dependencies {
+    classpath('org.jsweet:jsweet-gradle-plugin:1.1.0-SNAPSHOT') { //
+      transitive = true
+    }
+  }
 }
 
 
 task wrapper(type: Wrapper) {
   description = "Generates gradlew(.bat) scripts. Run this after changing Gradle's version number to update."
   gradleVersion = "3.0-milestone-2"
-  
+
   // Include Gradle documentation and source
   distributionUrl = "https://services.gradle.org/distributions/gradle-${gradleVersion}-all.zip"
 }
 
 repositories {
-	mavenCentral()
-	maven { url "http://repository.jsweet.org/artifactory/libs-" + project.repoType + "-local" }
-	maven { url "http://google-diff-match-patch.googlecode.com/svn/trunk/maven" }
+  mavenCentral()
+  maven { url "http://repository.jsweet.org/artifactory/libs-" + project.repoType + "-local" }
+  maven { url "http://google-diff-match-patch.googlecode.com/svn/trunk/maven" }
 }
 
-configurations { 
-	jsweetcorestrict 
+configurations {
+  jsweetcorestrict
 }
 
 dependencies {
-	compile group: 'org.jsweet', name: 'jsweet-transpiler', version:"1.1.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'jsweet-core', version:"1.1.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'jquery', version:"1.10.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'jqueryui', version:"1.9.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'angular', version:"1.4.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'angular-route', version:"1.3.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'es6-promise', version:"0.0.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'backbone', version:"1.0.0" + project.dependenciesVersionSuffix
-	compile group: 'org.jsweet.candies', name: 'knockout', version:"3.2.0" + project.dependenciesVersionSuffix
- // Markdown to HTML converter
-  compile group: 'org.jsweet.candies', name: 'showdown', version: "1.4.1-SNAPSHOT"
+  compile group: 'org.jsweet', name: 'jsweet-transpiler', version: "1.1.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'jsweet-core', version: "1.1.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'jquery', version: "1.10.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'jqueryui', version: "1.9.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'angular', version: "1.4.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'angular-route', version: "1.3.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'es6-promise', version: "0.0.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'backbone', version: "1.0.0" + project.dependenciesVersionSuffix
+  compile group: 'org.jsweet.candies', name: 'knockout', version: "3.2.0" + project.dependenciesVersionSuffix
+  // Allows us to use 'marked', a Markdown to HTML converter: https://github.com/chjj/marked
+  compile group: 'org.jsweet.candies', name: 'marked', version: "0.0.0-SNAPSHOT"
 }
 
+
 compileJava {
-	enabled = false
+  enabled = false
 }
 
 apply plugin: 'org.jsweet.jsweet-gradle-plugin'
 
 jsweet {
-	verbose = true
-	encoding = 'UTF-8'
-	sourceMap = true
-	outDir = new File('target/js')
-	targetVersion = EcmaScriptComplianceLevel.ES3
-	includes = ['**/org/jsweet/examples/**/*.java']
+  verbose = true
+  encoding = 'UTF-8'
+  sourceMap = true
+  outDir = new File('target/js')
+  targetVersion = EcmaScriptComplianceLevel.ES3
+  includes = ['**/org/jsweet/examples/**/*.java']
 }
