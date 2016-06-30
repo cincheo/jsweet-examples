@@ -34,7 +34,7 @@ buildscript {
 
 
 task wrapper(type: Wrapper) {
-  description = "Generates gradlew(.bat) scripts. Run this after changing Gradle's version number to update."
+  description = "Generates gradlew(.bat) scripts. To update, run this after changing Gradle's version number."
   gradleVersion = "3.0-milestone-2"
 
   // Include Gradle documentation and source
@@ -64,7 +64,6 @@ dependencies {
   // Allows us to use 'marked', a Markdown to HTML converter: https://github.com/chjj/marked
   compile group: 'org.jsweet.candies', name: 'marked', version: "0.0.0-SNAPSHOT"
 }
-
 
 compileJava {
   enabled = false

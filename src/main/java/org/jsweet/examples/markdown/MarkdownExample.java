@@ -17,11 +17,11 @@ public class MarkdownExample {
         HTMLInputElement markdownInput = (HTMLInputElement) document.querySelector("#markdownInput");
         HTMLElement htmlOutput = (HTMLElement) document.querySelector("#htmlOutput");
 
-        // Markdown text in the input element appears as HTML in the output element
-        connect(markdownInput, htmlOutput);
+        // Initially, show the default text of the input element in the HTML output
+        convert(markdownInput, htmlOutput);
 
-        // Show the default text of the input element in the HTML output
-        htmlOutput.innerHTML = marked(markdownInput.value);
+        // Markdown text in the input element appears as HTML in the output element when the user types
+        markdownInput.addEventListener("keyup", evt -> convert(markdownInput, htmlOutput));
     }
 
     public static void main(String... args) {
@@ -29,18 +29,15 @@ public class MarkdownExample {
     }
 
     /**
-     * When the user presses a key inside the {@code inputElement}, we convert the text inside it from Markdown to HTML
-     * and put the HTML into the {@code htmlOutput}.
+     * Takes the text of the {@code inputElement}, converts it from Markdown to HTML, and puts the HTML into the
+     * {@code outputElement}.
      *
-     * @param inputElement the user can write Markdown in this {@link HTMLInputElement}
-     * @param htmlOutput   this {@link HTMLElement} shows the text of the {@code inputElement} as HTML
+     * @param inputElement  we convert the text of this {@link HTMLInputElement} from Markdown to HTML
+     * @param outputElement this {@link HTMLElement} contains the text of the {@code inputElement} converted from Markdown to HTML
      */
-    private static void connect(HTMLInputElement inputElement, HTMLElement htmlOutput) {
-        // Transform the content from markdown to HTML
-        inputElement.addEventListener("keyup", (evt) -> {
-            String inputText = inputElement.value;
-            String html = marked(inputText);
-            htmlOutput.innerHTML = html;
-        });
+    private static void convert(HTMLInputElement inputElement, HTMLElement outputElement) {
+        String inputText = inputElement.value;
+        String html = marked(inputText);
+        outputElement.innerHTML = html;
     }
 }
