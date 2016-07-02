@@ -97,10 +97,6 @@ class TodoList extends Collection<Todo> {
 	Class<Todo> model = Todo.class;
 
 	// Save all of the todo items under the `"todos"` namespace.
-	// TODO: the Store class in backbone does not define any parameter in the
-	// constructor... maybe a mistake in the original TypeScript exammle, which
-	// declare the Store class as an "any" variable...
-	// Store localStorage = new Store("todos-backbone");
 	Store localStorage = new Store("todos-backbone");
 
 	// Filter down the list of all todo items that are finished.

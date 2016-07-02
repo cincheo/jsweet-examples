@@ -4,4 +4,7 @@
 .generated
 /.gradle/
 /build/
-/gradle/
+*.swp
+*.swo
+*.iml
+.idea/
