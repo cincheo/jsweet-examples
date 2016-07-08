@@ -1,6 +1,8 @@
 package org.jsweet.examples.blocksgame;
 
 import static jsweet.dom.Globals.document;
+import static jsweet.util.Globals.union;
+
 import jsweet.dom.CanvasRenderingContext2D;
 import jsweet.dom.HTMLImageElement;
 
@@ -13,8 +15,10 @@ import org.jsweet.examples.blocksgame.util.Vector;
 public class BlockElement extends AnimatedElement {
 
 	public static int CELL_SIZE = 44;
-	public static HTMLImageElement spriteBreakableBlock = (HTMLImageElement)document.getElementById("sprite-breakable-block");
-	public static HTMLImageElement spriteUnbreakableBlock = (HTMLImageElement)document.getElementById("sprite-unbreakable-block");
+	public static HTMLImageElement spriteBreakableBlock = (HTMLImageElement) document
+			.getElementById("sprite-breakable-block");
+	public static HTMLImageElement spriteUnbreakableBlock = (HTMLImageElement) document
+			.getElementById("sprite-unbreakable-block");
 
 	public double size;
 	public GameArea area;
@@ -61,7 +65,7 @@ public class BlockElement extends AnimatedElement {
 		if (this.hitstoBreak == -1) {
 			this.drawUnbreakable(animationCtx);
 			animationCtx.beginPath();
-			animationCtx.fillStyle = "rgba(255,255,255,0.4)";
+			animationCtx.fillStyle = union("rgba(255,255,255,0.4)");
 			animationCtx.rect(this.x, this.y, this.size, this.size);
 			animationCtx.fill();
 		} else {
@@ -129,8 +133,8 @@ public class BlockElement extends AnimatedElement {
 			this.initAnimation(2);
 		} else {
 			this.area.blockCount--;
-			this.area.remainingBlocks.innerHTML="Blocks: "+this.area.blockCount;
-			if(this.area.blockCount==0) {
+			this.area.remainingBlocks.innerHTML = "Blocks: " + this.area.blockCount;
+			if (this.area.blockCount == 0) {
 				this.area.end(0);
 			}
 			this.area.clearAll = true;
