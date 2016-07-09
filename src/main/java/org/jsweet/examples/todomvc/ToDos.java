@@ -3,6 +3,7 @@ package org.jsweet.examples.todomvc;
 import static def.jquery.Globals.$;
 import static def.underscore.Globals._;
 import static jsweet.dom.Globals.clearTimeout;
+import static jsweet.util.Globals.$apply;
 import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.union;
 
@@ -108,7 +109,9 @@ class TodoList extends Collection<Todo> {
 
 	// Filter down the list to only todo items that are still not finished.
 	Todo[] remaining() {
-		return this.without(jsweet.util.Globals.any(this.done()));
+		Todo[] done = this.done();
+		return (Todo[]) $apply((Function<Todo, Todo[]>)
+				this::without, done);
 	}
 
 	// We keep the Todos in sequential order, despite being saved by unordered

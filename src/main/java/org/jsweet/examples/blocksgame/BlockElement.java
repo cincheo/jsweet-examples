@@ -15,8 +15,10 @@ import org.jsweet.examples.blocksgame.util.Vector;
 public class BlockElement extends AnimatedElement {
 
 	public static int CELL_SIZE = 44;
-	public static HTMLImageElement spriteBreakableBlock = (HTMLImageElement)document.getElementById("sprite-breakable-block");
-	public static HTMLImageElement spriteUnbreakableBlock = (HTMLImageElement)document.getElementById("sprite-unbreakable-block");
+	public static HTMLImageElement spriteBreakableBlock = (HTMLImageElement) document
+			.getElementById("sprite-breakable-block");
+	public static HTMLImageElement spriteUnbreakableBlock = (HTMLImageElement) document
+			.getElementById("sprite-unbreakable-block");
 
 	public double size;
 	public GameArea area;
@@ -131,8 +133,8 @@ public class BlockElement extends AnimatedElement {
 			this.initAnimation(2);
 		} else {
 			this.area.blockCount--;
-			this.area.remainingBlocks.innerHTML="Blocks: "+this.area.blockCount;
-			if(this.area.blockCount==0) {
+			this.area.remainingBlocks.innerHTML = "Blocks: " + this.area.blockCount;
+			if (this.area.blockCount == 0) {
 				this.area.end(0);
 			}
 			this.area.clearAll = true;

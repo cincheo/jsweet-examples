@@ -2,6 +2,7 @@ package org.jsweet.examples.blocksgame;
 
 import static jsweet.dom.Globals.console;
 import static jsweet.dom.Globals.document;
+import static jsweet.util.Globals.array;
 import static jsweet.util.Globals.union;
 import static jsweet.util.StringTypes._2d;
 
@@ -297,8 +298,7 @@ public class GameArea {
 		areaLayerCtx.textAlign = "center";
 		areaLayerCtx.fillStyle = union("black");
 		double margin = this.positionSize * 2;
-		areaLayerCtx.fillRect(margin, (this.rows * this.positionSize) / 2 - 20,
-				(this.cols * this.positionSize) - 2 * margin, 40);
+		areaLayerCtx.fillRect(margin, (this.rows * this.positionSize) / 2 - 20, (this.cols * this.positionSize) - 2 * margin, 40);
 		areaLayerCtx.fillStyle = union("white");
 		areaLayerCtx.fillText(this.message, (this.cols * this.positionSize) / 2, (this.rows * this.positionSize) / 2);
 		areaLayerCtx.restore();
