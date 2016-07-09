@@ -5,6 +5,7 @@ import static def.underscore.Globals._;
 import static jsweet.dom.Globals.clearTimeout;
 import static jsweet.util.Globals.$apply;
 import static jsweet.util.Globals.function;
+import static jsweet.util.Globals.union;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -41,6 +42,7 @@ class StatsStruct extends ObjectHash {
 class Todo extends Model {
 
 	// Default attributes for the todo.
+	@Override
 	public TodoStruct defaults() {
 		return new TodoStruct() {
 			{
@@ -51,6 +53,7 @@ class Todo extends Model {
 	}
 
 	// Ensure that each todo created has `content`.
+	@Override
 	public void initialize() {
 		if (this.get("content") == null) {
 			this.set(new TodoStruct() {
@@ -71,6 +74,7 @@ class Todo extends Model {
 	}
 
 	// Remove this Todo from *localStorage* and delete its view.
+	@Override
 	public Object clear() {
 		return this.destroy();
 	}
@@ -94,10 +98,6 @@ class TodoList extends Collection<Todo> {
 	Class<Todo> model = Todo.class;
 
 	// Save all of the todo items under the `"todos"` namespace.
-	// TODO: the Store class in backbone does not define any parameter in the
-	// constructor... maybe a mistake in the original TypeScript exammle, which
-	// declare the Store class as an "any" variable...
-	// Store localStorage = new Store("todos-backbone");
 	Store localStorage = new Store("todos-backbone");
 
 	// Filter down the list of all todo items that are finished.
@@ -110,12 +110,8 @@ class TodoList extends Collection<Todo> {
 	// Filter down the list to only todo items that are still not finished.
 	Todo[] remaining() {
 		Todo[] done = this.done();
-		
-//		Function<Todo[], Todo[]> without = this::without;
 		return (Todo[]) $apply((Function<Todo, Todo[]>)
 				this::without, done);
-		
-//		return (Todo[]) function(without).apply(this, done);
 	}
 
 	// We keep the Todos in sequential order, despite being saved by unordered
@@ -127,8 +123,10 @@ class TodoList extends Collection<Todo> {
 	}
 
 	// Todos are sorted by their original insertion order.
-	public double comparatorTodo(Todo todo) {
-		return (Integer) todo.get("order");
+	{
+		comparator = union(function((Todo todo) -> {
+			return (Integer) todo.get("order");
+		}));
 	}
 
 }
@@ -346,7 +344,6 @@ class AppView extends View<Todo> {
 					$set("done", done);
 				}
 			});
-
 			return null;
 		});
 	}

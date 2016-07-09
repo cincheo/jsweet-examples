@@ -91,7 +91,8 @@ class Color {
 
 	static Color toDrawingColor(Color c) {
 		Function<Double, Double> legalize = d -> d > 1 ? 1 : d;
-		return new Color(Math.floor(legalize.apply(c.r) * 255), Math.floor(legalize.apply(c.g) * 255), Math.floor(legalize.apply(c.b) * 255));
+		return new Color(Math.floor(legalize.apply(c.r) * 255), Math.floor(legalize.apply(c.g) * 255),
+				Math.floor(legalize.apply(c.b) * 255));
 	}
 }
 
@@ -135,7 +136,8 @@ class Intersection {
 
 class Surface {
 
-	public Surface(Function<Vector, Color> diffuse, Function<Vector, Color> specular, Function<Vector, Double> reflect, double roughness) {
+	public Surface(Function<Vector, Color> diffuse, Function<Vector, Color> specular, Function<Vector, Double> reflect,
+			double roughness) {
 		this.diffuse = diffuse;
 		this.specular = specular;
 		this.reflect = reflect;
@@ -309,8 +311,10 @@ class RayTracer {
 		Vector pos = Vector.plus(Vector.times(isect.dist, d), isect.ray.start);
 		Vector normal = isect.thing.normal(pos);
 		Vector reflectDir = Vector.minus(d, Vector.times(2, Vector.times(Vector.dot(normal, d), normal)));
-		Color naturalColor = Color.plus(Color.background, this.getNaturalColor(isect.thing, pos, normal, reflectDir, scene));
-		Color reflectedColor = (depth >= this.maxDepth) ? Color.grey : this.getReflectionColor(isect.thing, pos, normal, reflectDir, scene, depth);
+		Color naturalColor = Color.plus(Color.background,
+				this.getNaturalColor(isect.thing, pos, normal, reflectDir, scene));
+		Color reflectedColor = (depth >= this.maxDepth) ? Color.grey
+				: this.getReflectionColor(isect.thing, pos, normal, reflectDir, scene, depth);
 		return Color.plus(naturalColor, reflectedColor);
 	}
 
@@ -330,9 +334,10 @@ class RayTracer {
 				double illum = Vector.dot(livec, norm);
 				Color lcolor = (illum > 0) ? Color.scale(illum, light.color) : Color.defaultColor;
 				double specular = Vector.dot(livec, Vector.norm(rd));
-				Color scolor = (specular > 0) ? Color.scale(Math.pow(specular, thing.surface.roughness), light.color) : Color.defaultColor;
-				return Color.plus(col,
-						Color.plus(Color.times(thing.surface.diffuse.apply(pos), lcolor), Color.times(thing.surface.specular.apply(pos), scolor)));
+				Color scolor = (specular > 0) ? Color.scale(Math.pow(specular, thing.surface.roughness), light.color)
+						: Color.defaultColor;
+				return Color.plus(col, Color.plus(Color.times(thing.surface.diffuse.apply(pos), lcolor),
+						Color.times(thing.surface.specular.apply(pos), scolor)));
 			}
 		};
 		return array(scene.lights).reduce(addLight, Color.defaultColor);
@@ -346,8 +351,8 @@ class RayTracer {
 			Function<Double, Double> recenterY = (y2) -> {
 				return -((y2 - (screenHeight / 2.0)) / 2.0 / screenHeight);
 			};
-			return Vector.norm(
-					Vector.plus(camera.forward, Vector.plus(Vector.times(recenterX.apply(x), camera.right), Vector.times(recenterY.apply(y), camera.up))));
+			return Vector.norm(Vector.plus(camera.forward, Vector.plus(Vector.times(recenterX.apply(x), camera.right),
+					Vector.times(recenterY.apply(y), camera.up))));
 		};
 		for (double y = 0; y < screenHeight; y++) {
 			for (double x = 0; x < screenWidth; x++) {
@@ -364,10 +369,12 @@ class Globals {
 
 	static Scene defaultScene() {
 		return new Scene(
-				new Thing[] { new Plane(new Vector(0.0, 1.0, 0.0), 0.0, Surfaces.checkerboard), new Sphere(new Vector(0.0, 1.0, -0.25), 1.0, Surfaces.shiny),
+				new Thing[] { new Plane(new Vector(0.0, 1.0, 0.0), 0.0, Surfaces.checkerboard),
+						new Sphere(new Vector(0.0, 1.0, -0.25), 1.0, Surfaces.shiny),
 						new Sphere(new Vector(-1.0, 0.5, 1.5), 0.5, Surfaces.shiny) },
 				new Light[] { new Light(new Vector(-2.0, 2.5, 0.0), new Color(0.49, 0.07, 0.07)),
-						new Light(new Vector(1.5, 2.5, 1.5), new Color(0.07, 0.07, 0.49)), new Light(new Vector(1.5, 2.5, -1.5), new Color(0.07, 0.49, 0.071)),
+						new Light(new Vector(1.5, 2.5, 1.5), new Color(0.07, 0.07, 0.49)),
+						new Light(new Vector(1.5, 2.5, -1.5), new Color(0.07, 0.49, 0.071)),
 						new Light(new Vector(0.0, 3.5, 0.0), new Color(0.21, 0.21, 0.35)) },
 				new Camera(new Vector(3.0, 2.0, 4.0), new Vector(-1.0, 0.5, 0.0)));
 	}
@@ -378,9 +385,9 @@ class Globals {
 		HTMLCanvasElement canv = document.createElement(StringTypes.canvas);
 		canv.width = size;
 		canv.height = size;
-		canv.style.transform="scale("+(windowSize / size)+","+(windowSize / size)+")";
-		canv.style.transformOrigin="0 0";
-		console.log("transform="+canv.style.transform);
+		canv.style.transform = "scale(" + (windowSize / size) + "," + (windowSize / size) + ")";
+		canv.style.transformOrigin = "0 0";
+		console.log("transform=" + canv.style.transform);
 		document.body.appendChild(canv);
 		CanvasRenderingContext2D ctx = canv.getContext(StringTypes._2d);
 		RayTracer rayTracer = new RayTracer();

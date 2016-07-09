@@ -7,7 +7,6 @@ import static jsweet.dom.Globals.setTimeout;
 import static jsweet.lang.Globals.parseInt;
 import static jsweet.util.Globals.$get;
 import static jsweet.util.Globals.function;
-import static jsweet.util.Globals.object;
 import static jsweet.util.Globals.string;
 import static jsweet.util.Globals.union;
 import static org.jsweet.examples.angularjs.Globals.toTitleCase;
@@ -60,7 +59,7 @@ class Invitation {
 	}
 
 	public String getStatusLabel() {
-		String label = (String) $get(InvitationStatus.class, "" + status);
+		String label = $get(InvitationStatus.class, "" + status);
 		return toTitleCase(label);
 	}
 }
