@@ -2,7 +2,7 @@ package org.jsweet.examples.todomvc;
 
 import static def.jquery.Globals.$;
 import static def.underscore.Globals._;
-import static jsweet.dom.Globals.clearTimeout;
+import static def.dom.Globals.clearTimeout;
 import static jsweet.util.Globals.$apply;
 import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.union;
@@ -17,10 +17,10 @@ import def.backbone.backbone.ObjectHash;
 import def.backbone.backbone.View;
 import def.backbone.backbone.ViewOptions;
 import def.jquery.JQuery;
-import jsweet.dom.Element;
-import jsweet.dom.Event;
-import jsweet.dom.HTMLInputElement;
-import jsweet.dom.KeyboardEvent;
+import def.dom.Element;
+import def.dom.Event;
+import def.dom.HTMLInputElement;
+import def.dom.KeyboardEvent;
 import jsweet.lang.Ambient;
 
 //Todo Model

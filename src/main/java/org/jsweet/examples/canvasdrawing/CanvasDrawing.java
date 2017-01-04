@@ -1,14 +1,15 @@
 package org.jsweet.examples.canvasdrawing;
 
-import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.document;
-import static jsweet.dom.Globals.window;
+import static def.dom.Globals.console;
+import static def.dom.Globals.document;
+import static def.dom.Globals.window;
 import static jsweet.util.Globals.union;
 
-import jsweet.dom.CanvasRenderingContext2D;
-import jsweet.dom.Element;
-import jsweet.dom.HTMLCanvasElement;
-import jsweet.lang.Math;
+import def.dom.CanvasRenderingContext2D;
+import def.dom.Element;
+import def.dom.HTMLCanvasElement;
+import def.js.Array;
+import def.js.Math;
 import jsweet.util.StringTypes;
 
 public class CanvasDrawing {
@@ -18,7 +19,7 @@ public class CanvasDrawing {
 			return new CanvasDrawing();
 		};
 	}
-	
+
 	private HTMLCanvasElement canvas;
 	private CanvasRenderingContext2D ctx;
 	private double angle = 0;
@@ -42,7 +43,7 @@ public class CanvasDrawing {
 		int color = (int) (Math.pow(2, 8 * Math.floor(angle / Math.PI * 2) - 1));
 
 		ctx.fillStyle = union("rgb(" + (color >> 16 & 0xFF) + "," + (color >> 8 & 0xFF) + "," + (color & 0xFF) + ")");
-		console.log(ctx.fillStyle, color +  "opp"  + Math.floor(angle / Math.PI * 2));
+		console.log(ctx.fillStyle, color + "opp" + Math.floor(angle / Math.PI * 2));
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.beginPath();
@@ -56,6 +57,22 @@ public class CanvasDrawing {
 				this.draw();
 			});
 		}
+	}
+
+	void test() {
+		Array<String> a = new Array<>();
+		for (@SuppressWarnings("unused")
+		String aTestVar : a) {
+			console.log(a);
+		}
+	}
+
+	void test1(String aTestParam1) {
+		console.log(aTestParam1);
+	}
+
+	void test1(int aTestParam2) {
+		console.log(aTestParam2);
 	}
 
 }

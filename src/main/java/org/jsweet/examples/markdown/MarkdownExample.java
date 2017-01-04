@@ -1,10 +1,10 @@
 package org.jsweet.examples.markdown;
 
-import jsweet.dom.HTMLElement;
-import jsweet.dom.HTMLInputElement;
+import def.dom.HTMLElement;
+import def.dom.HTMLInputElement;
 
 import static def.marked.Globals.marked;
-import static jsweet.dom.Globals.document;
+import static def.dom.Globals.document;
 
 /**
  * Lets the user enter text and converts it from Markdown to HTML.

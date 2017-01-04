@@ -1,10 +1,10 @@
 package org.jsweet.examples.angularjs;
 
 import static def.angularjs.Globals.angular;
-import static jsweet.dom.Globals.confirm;
-import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.setTimeout;
-import static jsweet.lang.Globals.parseInt;
+import static def.dom.Globals.confirm;
+import static def.dom.Globals.console;
+import static def.dom.Globals.setTimeout;
+import static def.js.Globals.parseInt;
 import static jsweet.util.Globals.$get;
 import static jsweet.util.Globals.function;
 import static jsweet.util.Globals.string;
@@ -22,10 +22,10 @@ import def.angularjs.ng.IScope;
 import def.angularjs.ng.route.IRoute;
 import def.angularjs.ng.route.IRouteParamsService;
 import def.angularjs.ng.route.IRouteProvider;
-import jsweet.lang.Array;
-import jsweet.lang.Date;
+import def.js.Array;
+import def.js.Date;
 import jsweet.lang.Interface;
-import jsweet.lang.RegExp;
+import def.js.RegExp;
 
 enum InvitationStatus {
 	NEW, SUBMITTED, ACCEPTED;

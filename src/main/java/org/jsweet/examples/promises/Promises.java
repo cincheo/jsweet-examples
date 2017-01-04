@@ -1,11 +1,11 @@
 package org.jsweet.examples.promises;
 
-import static jsweet.dom.Globals.alert;
-import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.document;
-import static jsweet.dom.Globals.setTimeout;
-import static jsweet.dom.Globals.window;
-import static jsweet.lang.Globals.parseInt;
+import static def.dom.Globals.alert;
+import static def.dom.Globals.console;
+import static def.dom.Globals.document;
+import static def.dom.Globals.setTimeout;
+import static def.dom.Globals.window;
+import static def.js.Globals.parseInt;
 import static jsweet.util.Globals.array;
 import static jsweet.util.Globals.function;
 import static jsweet.util.StringTypes.click;
@@ -15,11 +15,11 @@ import java.util.function.Consumer;
 
 import def.es6_promise.Promise;
 import def.es6_promise.Promise.CallbackBiConsumer;
-import jsweet.dom.HTMLDivElement;
-import jsweet.dom.HTMLElement;
-import jsweet.lang.Array;
-import jsweet.lang.Date;
-import jsweet.lang.Math;
+import def.dom.HTMLDivElement;
+import def.dom.HTMLElement;
+import def.js.Array;
+import def.js.Date;
+import def.js.Math;
 
 class ConcurrentSpinner {
 

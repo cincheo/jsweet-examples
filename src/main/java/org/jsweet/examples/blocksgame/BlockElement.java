@@ -1,10 +1,10 @@
 package org.jsweet.examples.blocksgame;
 
-import static jsweet.dom.Globals.document;
+import static def.dom.Globals.document;
 import static jsweet.util.Globals.union;
 
-import jsweet.dom.CanvasRenderingContext2D;
-import jsweet.dom.HTMLImageElement;
+import def.dom.CanvasRenderingContext2D;
+import def.dom.HTMLImageElement;
 
 import org.jsweet.examples.blocksgame.util.AnimatedElement;
 import org.jsweet.examples.blocksgame.util.Collisions;

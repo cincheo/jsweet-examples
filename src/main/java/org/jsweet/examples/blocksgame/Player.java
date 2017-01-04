@@ -1,6 +1,6 @@
 package org.jsweet.examples.blocksgame;
 
-import static jsweet.dom.Globals.console;
+import static def.dom.Globals.console;
 import static jsweet.util.Globals.union;
 
 import org.jsweet.examples.blocksgame.util.Collisions;
@@ -9,8 +9,8 @@ import org.jsweet.examples.blocksgame.util.MobileElement;
 import org.jsweet.examples.blocksgame.util.Point;
 import org.jsweet.examples.blocksgame.util.Vector;
 
-import jsweet.dom.CanvasRenderingContext2D;
-import jsweet.lang.Math;
+import def.dom.CanvasRenderingContext2D;
+import def.js.Math;
 
 public class Player extends MobileElement {
 

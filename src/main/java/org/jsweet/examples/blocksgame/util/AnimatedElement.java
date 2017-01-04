@@ -1,6 +1,6 @@
 package org.jsweet.examples.blocksgame.util;
 
-import jsweet.dom.CanvasRenderingContext2D;
+import def.dom.CanvasRenderingContext2D;
 
 public abstract class AnimatedElement {
 

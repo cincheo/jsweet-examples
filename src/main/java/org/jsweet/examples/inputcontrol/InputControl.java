@@ -1,16 +1,16 @@
 package org.jsweet.examples.inputcontrol;
 
-import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.document;
-import static jsweet.dom.Globals.window;
+import static def.dom.Globals.console;
+import static def.dom.Globals.document;
+import static def.dom.Globals.window;
 
-import jsweet.dom.Event;
-import jsweet.dom.HTMLAnchorElement;
-import jsweet.dom.HTMLElement;
-import jsweet.dom.HTMLFormElement;
-import jsweet.dom.HTMLInputElement;
-import jsweet.dom.Node;
-import jsweet.dom.NodeList;
+import def.dom.Event;
+import def.dom.HTMLAnchorElement;
+import def.dom.HTMLElement;
+import def.dom.HTMLFormElement;
+import def.dom.HTMLInputElement;
+import def.dom.Node;
+import def.dom.NodeList;
 
 public class InputControl {
 

@@ -5,9 +5,8 @@ import static jsweet.util.Globals.union;
 import org.jsweet.examples.blocksgame.util.MobileElement;
 import org.jsweet.examples.blocksgame.util.Point;
 import org.jsweet.examples.blocksgame.util.Vector;
-import static jsweet.util.Globals.union;
-import jsweet.dom.CanvasRenderingContext2D;
-import jsweet.lang.Math;
+import def.dom.CanvasRenderingContext2D;
+import def.js.Math;
 
 public class Ball extends MobileElement {
 

@@ -1,19 +1,19 @@
 package org.jsweet.examples.raytracer;
 
-import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.document;
-import static jsweet.dom.Globals.window;
-import static jsweet.lang.Globals.Infinity;
+import static def.dom.Globals.console;
+import static def.dom.Globals.document;
+import static def.dom.Globals.window;
+import static def.js.Globals.Infinity;
 import static jsweet.util.Globals.array;
 import static jsweet.util.Globals.union;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import jsweet.dom.CanvasRenderingContext2D;
-import jsweet.dom.HTMLCanvasElement;
-import jsweet.lang.Math;
-import jsweet.lang.String;
+import def.dom.CanvasRenderingContext2D;
+import def.dom.HTMLCanvasElement;
+import def.js.Math;
+import def.js.String;
 import jsweet.util.StringTypes;
 import jsweet.util.function.TriFunction;
 

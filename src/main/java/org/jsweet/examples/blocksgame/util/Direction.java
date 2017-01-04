@@ -1,6 +1,6 @@
 package org.jsweet.examples.blocksgame.util;
 
-import jsweet.lang.Math;
+import def.js.Math;
 
 public class Direction {
 

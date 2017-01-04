@@ -1,7 +1,7 @@
 package org.jsweet.examples.blocksgame;
 
-import static jsweet.dom.Globals.console;
-import static jsweet.dom.Globals.document;
+import static def.dom.Globals.console;
+import static def.dom.Globals.document;
 import static jsweet.util.Globals.array;
 import static jsweet.util.Globals.union;
 import static jsweet.util.StringTypes._2d;
@@ -10,14 +10,14 @@ import org.jsweet.examples.blocksgame.util.Direction;
 import org.jsweet.examples.blocksgame.util.Point;
 import org.jsweet.examples.blocksgame.util.Rectangle;
 
-import jsweet.dom.CanvasRenderingContext2D;
-import jsweet.dom.Event;
-import jsweet.dom.HTMLElement;
-import jsweet.dom.MouseEvent;
-import jsweet.dom.Touch;
-import jsweet.dom.TouchEvent;
-import jsweet.lang.Date;
-import jsweet.lang.Math;
+import def.dom.CanvasRenderingContext2D;
+import def.dom.Event;
+import def.dom.HTMLElement;
+import def.dom.MouseEvent;
+import def.dom.Touch;
+import def.dom.TouchEvent;
+import def.js.Date;
+import def.js.Math;
 
 public class GameArea {
 

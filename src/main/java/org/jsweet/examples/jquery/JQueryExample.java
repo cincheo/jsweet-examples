@@ -1,15 +1,15 @@
 package org.jsweet.examples.jquery;
 
 import static def.jquery.Globals.$;
-import static jsweet.dom.Globals.document;
-import static jsweet.dom.Globals.window;
+import static def.dom.Globals.document;
+import static def.dom.Globals.window;
 import static jsweet.util.Globals.array;
 import static jsweet.util.Globals.function;
 
 import java.util.function.Consumer;
 
-import jsweet.lang.Array;
-import jsweet.lang.Object;
+import def.js.Array;
+import def.js.Object;
 import def.jquery.JQuery;
 
 public class JQueryExample {

@@ -1,5 +1,8 @@
+compiler.bundle=true
 compiler.debugMode=java
 compiler.javascriptFolder=target/js
 compiler.moduleKind=none
-compiler.typescriptFolder=.generated
+compiler.nojs=false
+compiler.profiles=default
+compiler.typescriptFolder=target/ts
 eclipse.preferences.version=1
