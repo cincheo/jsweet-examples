@@ -3,9 +3,9 @@ package org.jsweet.examples.todomvc;
 import static def.jquery.Globals.$;
 import static def.underscore.Globals._;
 import static def.dom.Globals.clearTimeout;
-import static jsweet.util.Globals.$apply;
-import static jsweet.util.Globals.function;
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.$apply;
+import static jsweet.util.Lang.function;
+import static jsweet.util.Lang.union;
 
 import java.util.function.Consumer;
 import java.util.function.Function;

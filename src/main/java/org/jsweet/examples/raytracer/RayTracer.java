@@ -4,8 +4,8 @@ import static def.dom.Globals.console;
 import static def.dom.Globals.document;
 import static def.dom.Globals.window;
 import static def.js.Globals.Infinity;
-import static jsweet.util.Globals.array;
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.array;
+import static jsweet.util.Lang.union;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;

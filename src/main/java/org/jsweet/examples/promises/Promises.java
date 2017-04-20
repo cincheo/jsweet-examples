@@ -6,8 +6,8 @@ import static def.dom.Globals.document;
 import static def.dom.Globals.setTimeout;
 import static def.dom.Globals.window;
 import static def.js.Globals.parseInt;
-import static jsweet.util.Globals.array;
-import static jsweet.util.Globals.function;
+import static jsweet.util.Lang.array;
+import static jsweet.util.Lang.function;
 import static jsweet.util.StringTypes.click;
 import static jsweet.util.StringTypes.div;
 

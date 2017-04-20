@@ -5,10 +5,10 @@ import static def.dom.Globals.confirm;
 import static def.dom.Globals.console;
 import static def.dom.Globals.setTimeout;
 import static def.js.Globals.parseInt;
-import static jsweet.util.Globals.$get;
-import static jsweet.util.Globals.function;
-import static jsweet.util.Globals.string;
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.$get;
+import static jsweet.util.Lang.function;
+import static jsweet.util.Lang.string;
+import static jsweet.util.Lang.union;
 import static org.jsweet.examples.angularjs.Globals.toTitleCase;
 
 import java.util.function.Consumer;

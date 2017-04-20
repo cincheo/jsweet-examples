@@ -1,7 +1,7 @@
 package org.jsweet.examples.knockoutjs;
 
 import static def.knockout.Globals.ko;
-import static jsweet.util.Globals.number;
+import static jsweet.util.Lang.number;
 
 import def.knockout.KnockoutComputed;
 import def.knockout.KnockoutObservable;

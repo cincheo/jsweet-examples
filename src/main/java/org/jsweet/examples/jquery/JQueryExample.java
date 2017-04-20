@@ -3,8 +3,8 @@ package org.jsweet.examples.jquery;
 import static def.jquery.Globals.$;
 import static def.dom.Globals.document;
 import static def.dom.Globals.window;
-import static jsweet.util.Globals.array;
-import static jsweet.util.Globals.function;
+import static jsweet.util.Lang.array;
+import static jsweet.util.Lang.function;
 
 import java.util.function.Consumer;
 
