@@ -356,7 +356,7 @@ class RayTracer {
 		};
 		for (double y = 0; y < screenHeight; y++) {
 			for (double x = 0; x < screenWidth; x++) {
-				Color color = this.traceRay(new Ray(scene.camera.pos, getPoint.apply(x, y, scene.camera)), scene, 0);
+				Color color = this.traceRay(new Ray(scene.camera.pos, getPoint.$apply(x, y, scene.camera)), scene, 0);
 				Color c = Color.toDrawingColor(color);
 				ctx.fillStyle = union("rgb(" + new String(c.r) + ", " + new String(c.g) + ", " + new String(c.b) + ")");
 				ctx.fillRect(x, y, x + 1, y + 1);

@@ -61,7 +61,7 @@ class SeatReservation {
 		this.name = name;
 		this.meal = ko.observable(initialMeal);
 		this.formattedPrice = ko.computed(() -> {
-			Double price = meal.apply().price;
+			Double price = meal.$apply().price;
 			return price != null ? "$" + number(price).toFixed(2) : "None";
 		});
 	}
