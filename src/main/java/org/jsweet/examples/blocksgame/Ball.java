@@ -1,6 +1,6 @@
 package org.jsweet.examples.blocksgame;
 
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.union;
 
 import org.jsweet.examples.blocksgame.util.MobileElement;
 import org.jsweet.examples.blocksgame.util.Point;

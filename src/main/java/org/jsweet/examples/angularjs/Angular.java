@@ -5,10 +5,10 @@ import static def.dom.Globals.confirm;
 import static def.dom.Globals.console;
 import static def.dom.Globals.setTimeout;
 import static def.js.Globals.parseInt;
-import static jsweet.util.Lang.$get;
 import static jsweet.util.Lang.function;
 import static jsweet.util.Lang.string;
 import static jsweet.util.Lang.union;
+import static jsweet.util.Lang.object;
 import static org.jsweet.examples.angularjs.Globals.toTitleCase;
 
 import java.util.function.Consumer;
@@ -59,7 +59,7 @@ class Invitation {
 	}
 
 	public String getStatusLabel() {
-		String label = $get(InvitationStatus.class, "" + status);
+		String label = object(InvitationStatus.class).$get("" + status);
 		return toTitleCase(label);
 	}
 }
@@ -117,14 +117,14 @@ class InvitationRepository {
 	}
 
 	public Invitation get(Number id) {
-		return invitations.filter((person, i, l) -> {
+		return invitations.filter(person -> {
 			return person.id == id;
-		})[0];
+		}).$get(0);
 	}
 
 	public void remove(Invitation invitation) {
 		console.log("remove invitation", invitation);
-		double index = invitations.indexOf(invitation);
+		int index = invitations.indexOf(invitation);
 		if (index != -1) {
 			invitations.splice(index, 1);
 		}
@@ -306,8 +306,8 @@ class Globals {
 	}
 
 	public static String toTitleCase(String str) {
-		return string(str.toLowerCase()).replace(new RegExp("\\w\\S*", "g"), (tok, i) -> {
-			return string(tok).charAt(0).toUpperCase() + string(tok).substr(1).toLowerCase();
-		});
+		return string(string(str).toLowerCase().replace(new RegExp("\\w\\S*", "g"), (tok, i) -> {
+			return tok.charAt(0).toUpperCase().concat(tok.substr(1).toLowerCase());
+		}));
 	}
 }
