@@ -4,13 +4,14 @@ import static def.dom.Globals.console;
 import static def.dom.Globals.document;
 import static def.dom.Globals.window;
 
+import def.dom.Element;
 import def.dom.Event;
 import def.dom.HTMLAnchorElement;
 import def.dom.HTMLElement;
 import def.dom.HTMLFormElement;
 import def.dom.HTMLInputElement;
 import def.dom.Node;
-import def.dom.NodeList;
+import def.dom.NodeListOf;
 
 public class InputControl {
 
@@ -26,15 +27,15 @@ public class InputControl {
 		this.form = (HTMLFormElement) document.querySelector("form");
 		this.form.onsubmit = this::onSubmit;
 
-		NodeList inputs = this.form.querySelectorAll(".form-control");
+		NodeListOf<Element> inputs = this.form.querySelectorAll(".form-control");
 		for (Node element : this.form.querySelectorAll(".form-control")) {
 			addHitListener((HTMLElement) element);
 		}
 
 		this.form.querySelector("#reset").addEventListener("click", (event) -> {
 			form.reset();
-			for (Node element : inputs) {
-				((HTMLElement) element).classList.remove("hit");
+			for (Element element : inputs) {
+				element.classList.remove("hit");
 			}
 		});
 	}
