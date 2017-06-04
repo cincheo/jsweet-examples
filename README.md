@@ -23,7 +23,19 @@ Visit also https://github.com/cincheo/jsweet-examples-threejs for some examples 
 ```
 > git clone https://github.com/cincheo/jsweet-examples.git
 > cd jsweet-examples
-> mvn generate-sources
+```
+
+### Build with Gradle
+```
+./gradlew jsweetClean jsweet [--refresh-dependencies] [--info]
+````
+### OR build with Maven
+```
+mvn generate-sources
+```
+
+### Run in your favorite browser
+```
 > firefox webapp/${example-name}/index.html
 ```
 
