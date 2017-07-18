@@ -27,7 +27,7 @@ Visit also https://github.com/cincheo/jsweet-examples-threejs for some examples 
 
 ### Build with Gradle
 ```
-./gradlew jsweetClean jsweet [--refresh-dependencies] [--info]
+./gradlew jsweetClean jsweet (--refresh-dependencies) (--info)
 ````
 ### OR build with Maven
 ```
