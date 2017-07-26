@@ -102,7 +102,7 @@ class TodoList extends Collection<Todo> {
 
 	// Filter down the list of all todo items that are finished.
 	Todo[] done() {
-		return this.filter((todo, i, __) -> {
+		return this.filter((todo, i) -> {
 			return (Boolean) todo.get("done");
 		});
 	}
@@ -286,7 +286,6 @@ class AppView extends View<Todo> {
 	void addAll() {
 		Globals.Todos.each((todo, p, __) -> {
 			this.addOne(todo);
-			return null;
 		});
 	}
 
@@ -344,7 +343,6 @@ class AppView extends View<Todo> {
 					$set("done", done);
 				}
 			});
-			return null;
 		});
 	}
 
