@@ -10,6 +10,7 @@ import static jsweet.util.Lang.union;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import def.backbone.Store;
 import def.backbone.backbone.Collection;
 import def.backbone.backbone.Model;
 import def.backbone.backbone.ModelSaveOptions;
@@ -22,6 +23,7 @@ import def.dom.Event;
 import def.dom.HTMLInputElement;
 import def.dom.KeyboardEvent;
 import jsweet.lang.Ambient;
+import jsweet.lang.Interface;
 
 //Todo Model
 //----------
@@ -79,12 +81,6 @@ class Todo extends Model {
 		return this.destroy();
 	}
 
-}
-
-@Ambient
-class Store {
-	public Store(String dbName) {
-	}
 }
 
 // Todo Collection

@@ -74,5 +74,5 @@ jsweet {
   sourceMap = true
   outDir = new File('target/js')
   targetVersion = EcmaScriptComplianceLevel.ES3
-  includes = ['**/org/jsweet/examples/**/*.java']
+  includes = ['**/org/jsweet/examples/**/*.java', '**/def/**/*.java']
 }
