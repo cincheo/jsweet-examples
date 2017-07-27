@@ -4,8 +4,8 @@
 	<groupId>org.jsweet</groupId>
 	<artifactId>jsweet-examples</artifactId>
 	<version>2.0.0-SNAPSHOT</version>
-	<name>JSweet examples</name>
-	<description>A set of examples to illustrate JSweet</description>
+	<name>JSweet examples v2</name>
+	<description>A set of examples to illustrate JSweet v2</description>
 	<developers>
 		<developer>
 			<id>rpawlak</id>
@@ -72,6 +72,7 @@
 					<sourceMap>true</sourceMap>
 					<outDir>target/js</outDir>
 					<targetVersion>ES5</targetVersion>
+					<candiesJsOut>target/candies</candiesJsOut>
 				</configuration>
 				<executions>
 					<execution>
