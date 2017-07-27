@@ -22,8 +22,6 @@ import def.dom.Element;
 import def.dom.Event;
 import def.dom.HTMLInputElement;
 import def.dom.KeyboardEvent;
-import jsweet.lang.Ambient;
-import jsweet.lang.Interface;
 
 //Todo Model
 //----------
