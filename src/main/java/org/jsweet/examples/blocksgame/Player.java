@@ -1,7 +1,7 @@
 package org.jsweet.examples.blocksgame;
 
 import static def.dom.Globals.console;
-import static jsweet.util.Globals.union;
+import static jsweet.util.Lang.union;
 
 import org.jsweet.examples.blocksgame.util.Collisions;
 import org.jsweet.examples.blocksgame.util.Direction;
