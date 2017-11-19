@@ -1,46 +1,188 @@
-<!-- An example build file for ant users -->
-<!-- To be adapted to your own needs -->
-<project name="jsweet-examples" basedir="." default="compile">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#    ┬╭─╮┬ ┬╭─╮╭─╮╭┬╮                                                           
+#    │╰─╮│││├┤ ├┤  │     This build file is desgined to transpile         
+#   ╰╯╰─╯╰┴╯╰─╯╰─╯ ┴     Java to Javascrpt using http://jsweet.org
+#
+#   Type 'ant' or 'ant -projecthelp' to get a list of
+#   available targets
+#
+#   Settings and config properties are loaded from `local.properties`
+#
+#   2011-2017 Web Semantics, Inc. <adnan@websemantics.ca>
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<project default="transpile" basedir="." name="J2JS" xmlns:if="ant:if" xmlns:unless="ant:unless">
+    <description>Installs dependancies and transpile Java code to Javascript</description>
+    
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #
+    #  T A R G E T : Transpile Java to Typescript and Javascript
+    #
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<target name="transpile" depends="dependencies">
 
-	<property name="java.input.dir" value="./src" />
-	<property name="ts.dir" value="./.jsweet/ts" />
-	<property name="js.dir" value="./target/js" />
-	<!-- must contain all the Java jars for the transiler + all necessary Candies -->
-	<property name="lib.dir" value="libs" />
-
-	<path id="classpath">
-		<fileset dir="${lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
-	</path>
-
-	<!-- must be run the first time and when dependencies change (requires Maven in the path) -->
-	<target name="copy-maven-dependencies">
-		<exec executable="cmd">
-			<arg value="/C" />
-			<arg value="mvn" />
-			<arg line="dependency:copy-dependencies -DoutputDirectory=${lib.dir}" />
-		</exec>
-	</target>
-
-	<target name="compile" depends="clean">
-		<java classname="org.jsweet.JSweetCommandLineLauncher" fork="true" failonerror="true">
-			<!-- ts output dir -->
-			<arg value="--tsout" />
-			<arg value="${ts.dir}" />
-			<!-- js output dir -->
-			<arg value="-o" />
-			<arg value="${js.dir}" />
-			<!-- input dir -->
-			<arg value="-i" />
-			<arg value="${java.input.dir}" />
-			<classpath refid="classpath">
-			</classpath>
+        <!-- Create a header file (if enabled) -->
+        <echo if:true="${env.header}" file="${temp.dir}/header.txt" encoding="ISO-8859-1">${env.header.content}</echo>
+        
+        <!-- Invoke the transpiler -->
+	    <java classname="org.jsweet.JSweetCommandLineLauncher" fork="true" failonerror="true">
+            <classpath refid="classpath"/>
+			<arg value="--input" />
+			<arg value="${java.dir}" />
+            <arg value="--targetVersion"/>
+            <arg value="${env.transpiler.targetVersion}"/>
+            <arg value="--module" unless:blank="${env.transpiler.module}"/>
+            <arg value="${env.transpiler.module}" unless:blank="${env.transpiler.module}"/>
+            <arg value="--jsout"/>
+            <arg value="${env.transpiler.jsout}"/>
+            <arg value="--tsout"/>
+            <arg value="${env.transpiler.tsout}"/>
+            <arg value="--tsOnly" if:true="${env.transpiler.tsOnly}"/>
+            <arg value="--includes" unless:blank="${env.transpiler.includes}"/>
+            <arg value="${env.transpiler.includes}" unless:blank="${env.transpiler.includes}"/>
+            <arg value="--excludes" unless:blank="${env.transpiler.excludes}"/>
+            <arg value="${env.transpiler.excludes}" unless:blank="${env.transpiler.excludes}"/>
+            <arg value="--bundle" if:true="${env.transpiler.bundle}"/>
+            <arg value="--sourceMap" if:true="${env.transpiler.sourceMap}"/>
+            <arg value="--sourceRoot" unless:blank="${env.transpiler.sourceRoot}"/>
+            <arg value="${env.transpiler.sourceRoot}" unless:blank="${env.transpiler.sourceRoot}"/>
+            <arg value="--encoding"/>
+            <arg value="${env.transpiler.encoding}"/>
+            <arg value="--noRootDirectories" if:true="${env.transpiler.noRootDirectories}"/>
+            <arg value="--enableAssertions" if:true="${env.transpiler.enableAssertions}"/>
+            <arg value="--verbose" if:true="${env.transpiler.verbose}"/>
+            <arg value="--jdkHome" unless:blank="${env.transpiler.jdkHome}"/>
+            <arg value="${env.transpiler.jdkHome}" unless:blank="${env.transpiler.jdkHome}"/>
+            <arg value="--declaration" if:true="${env.transpiler.declaration}"/>
+            <arg value="--dtsout"/>
+            <arg value="${env.transpiler.dtsout}"/>
+            <arg value="--candiesJsOut"/>
+            <arg value="${env.transpiler.candiesJsOut}"/>
+            <arg value="--ignoreDefinitions" if:true="${env.transpiler.ignoreDefinitions}"/>
+            <arg value="--factoryClassName" unless:blank="${env.transpiler.factoryClassName}"/>
+            <arg value="${env.transpiler.factoryClassName}" unless:blank="${env.transpiler.factoryClassName}"/>
+            <arg value="--workingDir"/>
+            <arg value="${env.transpiler.workingDir}"/>
+            <arg value="--disableSinglePrecisionFloats" if:true="${env.transpiler.disableSinglePrecisionFloats}"/>
+            <!-- Caution : make sure to use either `env.header` or `env.transpiler.header` -->
+            <arg value="--header" unless:blank="${env.transpiler.header}"/>
+            <arg value="${env.transpiler.header}" unless:blank="${env.transpiler.header}"/>
+            <arg value="--header" if:true="${env.header}"/>
+            <arg value="${temp.dir}/header.txt" if:true="${env.header}"/>
 		</java>
 	</target>
 
-	<target name="clean">
-		<delete dir="${out.dir}" />
-	</target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #
+    #  T A R G E T : Download JSweet packages and dependencies
+    #
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
+    <target name="dependencies" depends="clean" description="Download JSweet packages and dependencies">
+
+        <mkdir dir="${libs.dir}"/>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        #  D O W N L O A D  J S W E E T  P A C K A G E S
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <dependency groupId="org.jsweet" artifactId="jsweet-transpiler" version="2.1.0-SNAPSHOT" snapshotVersion="2.1.0-20171115.191131-3" repository="${jsweet.repo}"/>
+        <dependency groupId="org.jsweet" artifactId="jsweet-core" version="5-SNAPSHOT" snapshotVersion="5-20170914.032325-17" repository="${jsweet.repo}"/>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        #  D O W N L O A D  J S W E E T  D E P E N D E N C I E S
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <dependency groupId="com.martiansoftware" artifactId="jsap" version="2.1"/>
+        <dependency groupId="log4j" artifactId="log4j" version="1.2.17"/>
+        <dependency groupId="com.google.code.gson" artifactId="gson" version="2.8.2"/>
+        <dependency groupId="commons-io" artifactId="commons-io" version="2.6"/>
+        <dependency groupId="org.apache.commons" artifactId="commons-lang3" version="3.7"/>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        #  D O W N L O A D  C A N D I E S
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <dependency groupId="org.jsweet.candies" artifactId="angular" version="1.4.0-20170726" repository="${jsweet.central.repo}"/>
+        <dependency groupId="org.jsweet.candies" artifactId="angular-route" version="1.2.0-20170726" repository="${jsweet.central.repo}"/>
+        <dependency groupId="org.jsweet.candies" artifactId="es6-promise" version="0.0.0-20170726" repository="${jsweet.central.repo}"/>
+        <dependency groupId="org.jsweet.candies" artifactId="backbone" version="1.3.0-20170726" repository="${jsweet.central.repo}"/>
+        <dependency groupId="org.jsweet.candies" artifactId="knockout" version="3.4.0-20170726" repository="${jsweet.central.repo}"/>
+        <dependency groupId="org.jsweet.candies" artifactId="marked" version="0.0.0-20170726" repository="${jsweet.central.repo}"/>
+        <dependency groupId="org.jsweet.candies" artifactId="jquery" version="1.10.0-20170726" repository="${jsweet.central.repo}"/>
+        <dependency groupId="org.jsweet.candies" artifactId="underscore" version="1.7.0-20170726" repository="${jsweet.central.repo}"/>
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #
+    #  T A R G E T : Delete build and temporary folders
+    #
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="clean" depends="init" description="Delete build and temporary folders">
+        <delete dir="${ts.dir}"/>
+        <delete dir="${js.dir}"/>
+        <delete dir="${build.dir}"/>
+        <delete dir="${temp.dir}"/>
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #
+    #  T A R G E T : Set project properties and classpath
+    #
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="init" description="Set project properties and classpath">
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        #  L O A D   P R O P E R T I E S
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <property environment="env"/>
+        <property file="local.properties"/>
+        <property name="project.dir" value="${user.dir}"/>
+        <property name="libs.dir" value="${project.dir}/${env.dependencies.dir}"/>
+		<property name="build.dir" value="${env.build.dir}" />
+		<property name="java.dir" value="${env.java.dir}" />
+		<property name="ts.dir" value="${env.transpiler.tsout}" />
+		<property name="js.dir" value="${env.transpiler.jsout}" />
+		<property name="temp.dir" value="${env.transpiler.workingDir}" />
+		<property name="maven.repo" value="${env.repository.maven}" />
+		<property name="jsweet.repo" value="${env.repository.jsweet.snapshots}" />
+		<property name="jsweet.central.repo" value="${env.repository.jsweet.central}" />
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        #  S E T   C L A S S P A T H 
+        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->       
+		<path id="classpath">
+			<fileset dir="${libs.dir}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #
+    #  M A C R O :  Download a dependency jar file
+    #
+    #
+    #  @param groupId,     ex: com.google.javascript
+    #
+    #  @param artifactId,  ex: closure-compiler
+    #
+    #  @param version,     ex: v20171112
+    #
+    #  @param snapshotVersion, defaults to @version if not provided
+    #
+    #  @param repository, base location of the dependency jar file.
+    #                     If not provided, use maven2 repository url.
+    #
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <macrodef name="dependency">
+        <attribute name="groupId"/>
+        <attribute name="artifactId"/>
+        <attribute name="version"/>
+        <attribute name="snapshotVersion" default="@{version}"/>
+        <attribute name="repository" default="http://central.maven.org/maven2"/>
+        <sequential>
+            <script language="javascript"><![CDATA[
+                project.setProperty('jarUrl', "@{repository}/" + "@{groupId}".split('.').join('/') +
+                                       "/@{artifactId}/@{version}/@{artifactId}-@{snapshotVersion}.jar");
+            ]]></script>
+            <get src="${jarUrl}" dest="${libs.dir}" usetimestamp="true" skipexisting="true"/>
+        </sequential>
+    </macrodef>
 </project>
