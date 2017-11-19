@@ -28,10 +28,14 @@ Visit also https://github.com/cincheo/jsweet-examples-threejs for some examples 
 ### Build with Gradle
 ```
 ./gradlew jsweetClean jsweet (--refresh-dependencies) (--info)
-````
-### OR build with Maven
+```
+### Build with Maven
 ```
 mvn generate-sources
+```
+### Build with Ant
+```
+ant
 ```
 
 ### Run in your favorite browser
