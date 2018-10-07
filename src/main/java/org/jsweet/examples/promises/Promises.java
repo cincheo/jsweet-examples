@@ -6,20 +6,19 @@ import static def.dom.Globals.document;
 import static def.dom.Globals.setTimeout;
 import static def.dom.Globals.window;
 import static def.js.Globals.parseInt;
-import static jsweet.util.Lang.array;
 import static jsweet.util.Lang.function;
 import static jsweet.util.StringTypes.click;
 import static jsweet.util.StringTypes.div;
 
 import java.util.function.Consumer;
 
-import def.es6_promise.Promise;
-import def.es6_promise.Promise.CallbackBiConsumer;
 import def.dom.HTMLDivElement;
 import def.dom.HTMLElement;
 import def.js.Array;
 import def.js.Date;
 import def.js.Math;
+import def.js.Promise;
+import def.js.PromiseLike;
 
 class ConcurrentSpinner {
 
@@ -35,8 +34,8 @@ class ConcurrentSpinner {
 		this.spinner = spinner;
 
 		startRace() //
-				.thenOnFulfilledFunction(this::onSuccess) //
-				.catchOnRejectedFunction(this::onError);
+				.then(this::onSuccess) //
+				.Catch(this::onError);
 	}
 
 	private Void onSuccess(Double[] times) {
@@ -62,12 +61,12 @@ class ConcurrentSpinner {
 	 */
 	@SuppressWarnings("unchecked")
 	private Promise<Double[]> startRace() {
-		Array<Promise<Double>> promises = new Array<Promise<Double>>();
+		Array<PromiseLike<Double>> promises = new Array<>();
 		for (int i = 0; i < 5; i++) {
 			promises.push(this.spawnProgressBar(i));
 		}
 
-		return Promise.all(array(promises));
+		return Promise.all(promises);
 	}
 
 	/**
@@ -105,8 +104,7 @@ class ConcurrentSpinner {
 		this.spinner.appendChild(bar);
 
 		double startTime = new Date().getTime();
-		return new Promise<Double>((CallbackBiConsumer<Consumer<Double>, Consumer<Object>>) //
-		(resolve, reject) -> {
+		return new Promise<Double>((Consumer<Double> resolve, Consumer<Object> reject) -> {
 			this.onProgress(bar, resolve, reject, startTime);
 		});
 	}

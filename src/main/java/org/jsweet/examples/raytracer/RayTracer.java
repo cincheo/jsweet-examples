@@ -12,9 +12,11 @@ import java.util.function.Function;
 
 import def.dom.CanvasRenderingContext2D;
 import def.dom.HTMLCanvasElement;
+import def.js.Array;
 import def.js.Math;
 import def.js.String;
 import jsweet.util.StringTypes;
+import jsweet.util.function.Function4;
 import jsweet.util.function.TriFunction;
 
 class Vector {
@@ -323,7 +325,7 @@ class RayTracer {
 	}
 
 	private Color getNaturalColor(Thing thing, Vector pos, Vector norm, Vector rd, Scene scene) {
-		BiFunction<Color, Light, Color> addLight = (col, light) -> {
+		Function4<Color, Light, Double, Array<Light>, Color> addLight = (col, light, __, ___) -> {
 			Vector ldis = Vector.minus(light.pos, pos);
 			Vector livec = Vector.norm(ldis);
 			Double neatIsect = this.testRay(new Ray(pos, livec), scene);
@@ -340,7 +342,7 @@ class RayTracer {
 						Color.times(thing.surface.specular.apply(pos), scolor)));
 			}
 		};
-		return array(scene.lights).reduce(addLight, Color.defaultColor);
+		return array(scene.lights).<Color>reduceCallbackfnUUFunction4(addLight, Color.defaultColor);
 	}
 
 	void render(Scene scene, CanvasRenderingContext2D ctx, int screenWidth, int screenHeight) {

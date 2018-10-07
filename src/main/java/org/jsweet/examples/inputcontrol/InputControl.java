@@ -11,7 +11,7 @@ import def.dom.HTMLElement;
 import def.dom.HTMLFormElement;
 import def.dom.HTMLInputElement;
 import def.dom.Node;
-import def.dom.NodeListOf;
+import def.js.Array;
 
 public class InputControl {
 
@@ -27,8 +27,8 @@ public class InputControl {
 		this.form = (HTMLFormElement) document.querySelector("form");
 		this.form.onsubmit = this::onSubmit;
 
-		NodeListOf<Element> inputs = this.form.querySelectorAll(".form-control");
-		for (Node element : this.form.querySelectorAll(".form-control")) {
+		Array<Element> inputs = Array.from(this.form.querySelectorAll(".form-control"));
+		for (Node element : inputs) {
 			addHitListener((HTMLElement) element);
 		}
 

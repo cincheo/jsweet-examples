@@ -71,7 +71,7 @@
 					<verbose>true</verbose>
 					<sourceMap>true</sourceMap>
 					<outDir>target/js</outDir>
-					<targetVersion>ES5</targetVersion>
+					<targetVersion>ES6</targetVersion>
 					<candiesJsOut>target/candies</candiesJsOut>
 				</configuration>
 				<executions>
