@@ -126,7 +126,7 @@
 		<dependency>
 			<groupId>org.jsweet</groupId>
 			<artifactId>jsweet-core</artifactId>
-			<version>5-20170726</version>
+			<version>6-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -142,11 +142,6 @@
 			<groupId>org.jsweet.candies</groupId>
 			<artifactId>angular-route</artifactId>
 			<version>1.2.0-20170726</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jsweet.candies</groupId>
-			<artifactId>es6-promise</artifactId>
-			<version>0.0.0-20170726</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsweet.candies</groupId>
