@@ -142,6 +142,8 @@ class TodoView extends View<Todo> {
 	JQuery input;
 
 	public TodoView(ViewOptions<Todo> options) {
+		super(options);
+		
 		// ... is a list tag.
 		this.tagName = "li";
 
@@ -156,7 +158,6 @@ class TodoView extends View<Todo> {
 			}
 		});
 
-		$super(options);
 
 		// Cache the template function for a single item.
 		this.template = _.template($("#item-template").html());

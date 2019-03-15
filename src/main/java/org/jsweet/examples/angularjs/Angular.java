@@ -269,13 +269,14 @@ class InvitationListController {
 
 class Globals {
 	public static void main(String[] args) {
+		System.out.println("Starting Angular.js example");
+		
 		IModule module = angular.module("angularExample", new String[] { "ngRoute" });
 		module.controller("GlobalController", function(GlobalController.class));
 		module.controller("InvitationRequestController", function(InvitationRequestController.class));
 		module.controller("InvitationEditController", function(InvitationEditController.class));
 		module.controller("InvitationListController", function(InvitationListController.class));
 		module.controller("InvitationViewController", function(InvitationViewController.class));
-
 		module.config(new Object[] { "$routeProvider", function((IRouteProvider $routeProvider) -> {
 			$routeProvider.when("/list", new IRoute() {
 				{
