@@ -75,6 +75,7 @@
 					<verbose>true</verbose>
 					<sourceMap>true</sourceMap>
 					<outDir>target/js</outDir>
+					<tsserver>true</tsserver>
 					<targetVersion>ES6</targetVersion>
 					<candiesJsOut>target/candies</candiesJsOut>
 				</configuration>
