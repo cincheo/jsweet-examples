@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jsweet</groupId>
 	<artifactId>jsweet-examples</artifactId>
-	<version>2.3.0-SNAPSHOT</version>
+	<version>${jsweet.transpiler.version}</version>
 	<name>JSweet examples</name>
 	<description>A set of examples to illustrate JSweet v2</description>
 	<developers>
@@ -26,6 +26,10 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+	<properties>
+		<jsweet.transpiler.version>2.3.2-SNAPSHOT</jsweet.transpiler.version>
+		<jsweet.core.version>6.0.2</jsweet.core.version>
+	</properties>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>jsweet-plugins-release</id>
@@ -66,7 +70,7 @@
 			<plugin>
 				<groupId>org.jsweet</groupId>
 				<artifactId>jsweet-maven-plugin</artifactId>
-				<version>2.3.0-SNAPSHOT</version>
+				<version>${jsweet.transpiler.version}</version>
 				<configuration>
 					<verbose>true</verbose>
 					<sourceMap>true</sourceMap>
