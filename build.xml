@@ -9,7 +9,6 @@
 #
 #   Settings and config properties are loaded from `local.properties`
 #
-#   2011-2017 Web Semantics, Inc. <adnan@websemantics.ca>
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <project default="transpile" basedir="." name="J2JS" xmlns:if="ant:if" xmlns:unless="ant:unless">
     <description>Installs dependancies and transpile Java code to Javascript</description>
