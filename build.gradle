@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'org.jsweet'
-version = "2.3.5-SNAPSHOT"
+version = "2.3.6-SNAPSHOT"
 
 description = """A set of examples to illustrate JSweet"""
 
