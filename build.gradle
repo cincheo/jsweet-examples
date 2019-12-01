@@ -4,16 +4,16 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'org.jsweet'
-version = "2.3.6-SNAPSHOT"
+version = "3.0.0-SNAPSHOT"
 
 description = """A set of examples to illustrate JSweet"""
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
 
 buildscript {
 	ext {
-		JSweetVersion = "2.3.3-SNAPSHOT"
+		JSweetVersion = "3.0.0-SNAPSHOT"
 	}
 	
 	boolean snapshotMode = true;
