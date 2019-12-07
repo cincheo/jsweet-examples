@@ -1,7 +1,7 @@
 package org.jsweet.examples.todomvc;
 
 import static def.jquery.Globals.$;
-import static def.underscore.Globals._;
+import static def.underscore.Globals.__;
 import static def.dom.Globals.clearTimeout;
 import static jsweet.util.Lang.$apply;
 import static jsweet.util.Lang.function;
