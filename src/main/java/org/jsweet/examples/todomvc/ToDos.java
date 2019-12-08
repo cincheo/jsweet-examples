@@ -160,9 +160,9 @@ class TodoView extends View<Todo> {
 
 
 		// Cache the template function for a single item.
-		this.template = _.template($("#item-template").html());
+		this.template = __.template($("#item-template").html());
 
-		_.bindAll(this, "render", "close", "remove");
+		__.bindAll(this, "render", "close", "remove");
 		this.model.bind("change", function(this::render));
 		this.model.bind("destroy", function(this::remove));
 	}
@@ -237,11 +237,11 @@ class AppView extends View<Todo> {
 		// At initialization we bind to the relevant events on the `Todos`
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting todos that might be saved in *localStorage*.
-		_.bindAll(this, "addOne", "addAll", "render", "toggleAllComplete");
+		__.bindAll(this, "addOne", "addAll", "render", "toggleAllComplete");
 
 		this.input = this.$("#new-todo");
 		this.allCheckbox = (HTMLInputElement) this.$(".mark-all-done").$get(0);
-		this.statsTemplate = _.template($("#stats-template").html());
+		this.statsTemplate = __.template($("#stats-template").html());
 
 		Globals.Todos.bind("add", function((Consumer<Todo>) this::addOne));
 		Globals.Todos.bind("reset", function(this::addAll));
@@ -307,7 +307,7 @@ class AppView extends View<Todo> {
 
 	// Clear all done todo items, destroying their models.
 	boolean clearCompleted() {
-		_.each(Globals.Todos.done(), (todo, i, a) -> {
+		__.each(Globals.Todos.done(), (todo, i, a) -> {
 			todo.clear();
 			return null;
 		});
@@ -326,7 +326,7 @@ class AppView extends View<Todo> {
 			clearTimeout(this.tooltipTimeout);
 		if (val == "" || val == this.input.attr("placeholder"))
 			return;
-		this.tooltipTimeout = (int) _.delay(function(() -> {
+		this.tooltipTimeout = (int) __.delay(function(() -> {
 			tooltip.show().fadeIn();
 		}), 1000, new Object[0]);
 	}

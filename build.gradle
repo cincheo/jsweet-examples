@@ -45,7 +45,7 @@ dependencies {
 	compile group: 'org.jsweet', name: 'jsweet-core', version: "6.0.2"
 	compile group: 'org.jsweet.candies', name: 'angular', version: "1.4.0-20170726"
 	compile group: 'org.jsweet.candies', name: 'angular-route', version: "1.2.0-20170726"
-	compile group: 'org.jsweet.candies', name: 'backbone', version:"1.3.0-20191207"
+	compile group: 'org.jsweet.candies', name: 'backbone', version:"1.3.0-20191207-5"
 	compile group: 'org.jsweet.candies', name: 'knockout', version:"3.4.0-20170726"
 	// Allows us to use 'marked', a Markdown to HTML converter: https://github.com/chjj/marked
 	compile group: 'org.jsweet.candies', name: 'marked', version: "0.0.0-20170726"
