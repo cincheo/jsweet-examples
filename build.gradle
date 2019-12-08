@@ -61,7 +61,7 @@ jsweet {
 	verbose = true
 	encoding = 'UTF-8'
 	sourceMap = true
-	outDir = new File('target/js')
+	outDir = project.file('target/js')
 	targetVersion = EcmaScriptComplianceLevel.ES6
 	includes = ['**/org/jsweet/examples/**/*.java', '**/def/**/*.java']
 }
