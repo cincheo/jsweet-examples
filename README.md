@@ -1,6 +1,6 @@
 # JSweet examples 
 
-[![Actions Status](https://github.com/cincheo/jsweet-examples/workflows/Build examples with Gradle/badge.svg)](https://github.com/cincheo/jsweet-examples/actions)
+![](https://github.com/cincheo/jsweet-examples/workflows/Build examples with Gradle/badge.svg)]
 
 A set of simple examples to show what can be done in Java with the [JSweet transpiler](https://github.com/cincheo/jsweet).
 
