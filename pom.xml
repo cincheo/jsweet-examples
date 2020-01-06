@@ -29,7 +29,7 @@
 	</licenses>
 	<properties>
 		<jsweet.transpiler.version>3.0.0-SNAPSHOT</jsweet.transpiler.version>
-		<jsweet.core.version>6.0.2</jsweet.core.version>
+		<jsweet.core.version>6.1.1-SNAPSHOT</jsweet.core.version>
 		<java.version.release>11</java.version.release>
 		<java.version>1.${java.version.release}</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -137,7 +137,7 @@
 		<dependency>
 			<groupId>org.jsweet</groupId>
 			<artifactId>jsweet-core</artifactId>
-			<version>6.0.1-SNAPSHOT</version>
+			<version>${jsweet.core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
