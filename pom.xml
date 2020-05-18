@@ -28,8 +28,8 @@
 		</license>
 	</licenses>
 	<properties>
-		<jsweet.transpiler.version>3.0.0-SNAPSHOT</jsweet.transpiler.version>
-		<jsweet.core.version>6.1.0-SNAPSHOT</jsweet.core.version>
+		<jsweet.transpiler.version>3.0.0-RC3</jsweet.transpiler.version>
+		<jsweet.core.version>6.2.0</jsweet.core.version>
 		<java.version.release>11</java.version.release>
 		<java.version>1.${java.version.release}</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -91,6 +91,13 @@
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>jsweet</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
 						</goals>
 					</execution>
 				</executions>

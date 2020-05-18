@@ -1,17 +1,27 @@
 package org.jsweet.examples.inputcontrol;
 
 import static def.dom.Globals.console;
+import static def.dom.Globals.alert;
 import static def.dom.Globals.document;
 import static def.dom.Globals.window;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import def.dom.Element;
 import def.dom.Event;
 import def.dom.HTMLAnchorElement;
+import def.dom.HTMLBodyElement;
 import def.dom.HTMLElement;
 import def.dom.HTMLFormElement;
 import def.dom.HTMLInputElement;
 import def.dom.Node;
+import def.dom.NodeList;
+import def.dom.NodeListOf;
 import def.js.Array;
+import jsweet.util.StringTypes;
+
+import static def.jquery.Globals.$;
 
 public class InputControl {
 
@@ -27,6 +37,18 @@ public class InputControl {
 		this.form = (HTMLFormElement) document.querySelector("form");
 		this.form.onsubmit = this::onSubmit;
 
+		// you can use regular Java API
+		List<String> l = new ArrayList<>();
+		l.add("Hello");
+		l.add("world");
+		// and you can also use regular JavaScript APIs
+		Array<String> a = new Array<>();
+		a.push("Hello", "world");
+		// use of jQuery with the jQuery candy
+		$("#target").text(l.toString());
+		// use of the JavaScript DOM API
+		alert(a.toString());
+		
 		Array<Element> inputs = Array.from(this.form.querySelectorAll(".form-control"));
 		for (Node element : inputs) {
 			addHitListener((HTMLElement) element);
