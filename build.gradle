@@ -30,7 +30,7 @@ buildscript {
 		maven { url "http://repository.jsweet.org/artifactory/plugins-release-local" }
 	}
 	dependencies {
-		classpath("org.jsweet:jsweet-gradle-plugin:" + JSweetVersion) { transitive = true }
+		classpath("org.jsweet.v3:jsweet-gradle-plugin:" + JSweetVersion) { transitive = true }
 	}
 }
 
