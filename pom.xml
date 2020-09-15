@@ -118,7 +118,7 @@
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
-											org.jsweet
+											org.jsweet.v3
 										</groupId>
 										<artifactId>
 											jsweet-maven-plugin
