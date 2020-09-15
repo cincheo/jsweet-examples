@@ -75,7 +75,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.jsweet</groupId>
+				<groupId>org.jsweet.v3</groupId>
 				<artifactId>jsweet-maven-plugin</artifactId>
 				<version>${jsweet.transpiler.version}</version>
 				<configuration>
