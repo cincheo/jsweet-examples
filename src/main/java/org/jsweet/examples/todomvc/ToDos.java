@@ -307,10 +307,11 @@ class AppView extends View<Todo> {
 
 	// Clear all done todo items, destroying their models.
 	boolean clearCompleted() {
-		__.each(Globals.Todos.done(), (todo, i, a) -> {
-			todo.clear();
-			return null;
-		});
+        Globals.Todos.each((todo, p, __) -> {
+            todo.clear();
+            return null;
+        });
+	    
 		return false;
 	}
 

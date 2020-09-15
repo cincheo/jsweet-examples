@@ -28,8 +28,9 @@
 		</license>
 	</licenses>
 	<properties>
-		<jsweet.transpiler.version>3.0.0-RC3</jsweet.transpiler.version>
-		<jsweet.core.version>6.2.0</jsweet.core.version>
+		<jsweet.transpiler.version>3.0.0-SNAPSHOT</jsweet.transpiler.version>
+		<jsweet.core.version>6.0.0</jsweet.core.version>
+		
 		<java.version.release>11</java.version.release>
 		<java.version>1.${java.version.release}</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -142,7 +143,7 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>org.jsweet</groupId>
+			<groupId>org.jsweet.v3</groupId>
 			<artifactId>jsweet-core</artifactId>
 			<version>${jsweet.core.version}</version>
 		</dependency>
@@ -152,34 +153,34 @@
 			<version>2.7</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.v3.candies</groupId>
 			<artifactId>angular</artifactId>
-			<version>1.4.0-20170726</version>
+			<version>1.4.0-20200915</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.v3.candies</groupId>
 			<artifactId>angular-route</artifactId>
-			<version>1.2.0-20170726</version>
+			<version>1.2.0-20200915</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.v3.candies</groupId>
 			<artifactId>backbone</artifactId>
-			<version>1.3.0-20191207-5</version>
+			<version>1.3.0-20200915</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.v3.candies</groupId>
 			<artifactId>knockout</artifactId>
-			<version>3.4.0-20170726</version>
+			<version>3.4.0-20200915</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.v3.candies</groupId>
 			<artifactId>marked</artifactId>
-			<version>0.0.0-20170726</version>
+			<version>0.0.0-20200915</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
+			<groupId>org.jsweet.v3.candies</groupId>
 			<artifactId>underscore</artifactId>
-			<version>1.7.0-20191201-1</version>
+			<version>1.7.0-20200915</version>
 		</dependency>
 	</dependencies>
 </project>
