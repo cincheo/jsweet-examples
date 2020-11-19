@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'org.jsweet.v3'
-version = "3.0.0-RC5"
+version = "3.0.0-RC11"
 
 description = """A set of examples to illustrate JSweet"""
 
@@ -13,7 +13,7 @@ targetCompatibility = 1.11
 
 buildscript {
 	ext {
-		JSweetVersion = "3.0.0-SNAPSHOT"
+		JSweetVersion = "3.0.0-RC11"
 	}
 	
 	boolean snapshotMode = true;
