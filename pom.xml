@@ -6,7 +6,7 @@
 	<artifactId>jsweet-examples</artifactId>
 	<version>${jsweet.transpiler.version}</version>
 	<name>JSweet examples</name>
-	<description>A set of examples to illustrate JSweet v2</description>
+	<description>A set of examples to illustrate JSweet</description>
 	<developers>
 		<developer>
 			<id>rpawlak</id>
