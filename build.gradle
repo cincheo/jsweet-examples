@@ -3,7 +3,7 @@ import org.jsweet.transpiler.EcmaScriptComplianceLevel;
 apply plugin: 'java'
 apply plugin: 'maven'
 
-group = 'org.jsweet.v3'
+group = 'org.jsweet'
 version = "3.0.0"
 
 description = """A set of examples to illustrate JSweet"""
@@ -41,14 +41,14 @@ repositories {
 }
 
 dependencies {
-	compile group: 'org.jsweet.v3', name: 'jsweet-transpiler', version: project.version
-	compile group: 'org.jsweet.v3', name: 'jsweet-core', version: "6.0.0"
-	compile group: 'org.jsweet.v3.candies', name: 'angular', version: "1.4.0-20200915"
-	compile group: 'org.jsweet.v3.candies', name: 'angular-route', version: "1.2.0-20200915"
-	compile group: 'org.jsweet.v3.candies', name: 'backbone', version:"1.3.0-20200915"
-	compile group: 'org.jsweet.v3.candies', name: 'knockout', version:"3.4.0-20200915"
+	compile group: 'org.jsweet', name: 'jsweet-transpiler', version: project.version
+	compile group: 'org.jsweet', name: 'jsweet-core', version: "6.0.0"
+	compile group: 'org.jsweet.candies', name: 'angular', version: "1.4.0-20201211"
+	compile group: 'org.jsweet.candies', name: 'angular-route', version: "1.2.0-20201211"
+	compile group: 'org.jsweet.candies', name: 'backbone', version:"1.3.0-20201211"
+	compile group: 'org.jsweet.candies', name: 'knockout', version:"3.4.0-20170726"
 	// Allows us to use 'marked', a Markdown to HTML converter: https://github.com/chjj/marked
-	compile group: 'org.jsweet.v3.candies', name: 'marked', version: "0.0.0-20200915"
+	compile group: 'org.jsweet.candies', name: 'marked', version: "0.0.0-20170726"
 }
 
 compileJava {
