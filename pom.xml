@@ -29,7 +29,7 @@
 	</licenses>
 	<properties>
 		<jsweet.transpiler.version>3.0.0</jsweet.transpiler.version>
-		<jsweet.core.version>6.0.0</jsweet.core.version>
+		<jsweet.core.version>6.3.0</jsweet.core.version>
 		
 		<java.version.release>11</java.version.release>
 		<java.version>1.${java.version.release}</java.version>
@@ -161,7 +161,7 @@
 		<dependency>
 			<groupId>org.jsweet.candies</groupId>
 			<artifactId>angular-route</artifactId>
-			<version>1.2.0-20170726</version>
+			<version>1.2.0-20201211</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsweet.candies</groupId>
