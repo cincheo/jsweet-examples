@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'org.jsweet'
-version = "3.0.0"
+version = "3.1.0-SNAPSHOT"
 
 description = """A set of examples to illustrate JSweet"""
 
@@ -13,13 +13,13 @@ targetCompatibility = 1.11
 
 buildscript {
 	ext {
-		JSweetVersion = "3.0.0"
+		JSweetVersion = "3.1.0-SNAPSHOT"
 	}
 	
 	boolean snapshotMode = true;
 	project.ext.repoType =  snapshotMode ? 'snapshot' : 'release';
 
-	println "repoType=" + project.repoType + " projectVersion=${project.version}"
+	println "repoType=" + project.repoType + " JSweetVersion=${JSweetVersion}"
 
 	repositories {
 		mavenLocal()

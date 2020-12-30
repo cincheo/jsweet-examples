@@ -31,7 +31,7 @@ Visit also https://github.com/cincheo/jsweet-examples-threejs for some examples 
 ```
 ### Build with Maven
 ```
-mvn generate-sources
+mvn clean generate-sources
 ```
 ### Build with Ant
 ```
