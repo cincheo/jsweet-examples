@@ -28,7 +28,7 @@
 		</license>
 	</licenses>
 	<properties>
-		<jsweet.transpiler.version>3.1.0-SNAPSHOT</jsweet.transpiler.version>
+		<jsweet.transpiler.version>3.1.0</jsweet.transpiler.version>
 		<jsweet.core.version>6.3.0</jsweet.core.version>
 		
 		<java.version.release>11</java.version.release>
